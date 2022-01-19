@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="MAIN" Id="{d1c7ef4e-0337-49c7-9736-af80a39f1b25}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	//stThisIsOurFirstInstanceOfAStructure : ST_Event;
+	bBoolean : BOOL := FALSE;
+	eEventType1 : E_EventType := E_EventType.Alarm;
+	eEventSeverity1 : TcEventSeverity := TcEventSeverity.Error;
+	nEventIdentity1 : UDINT := 42;
+	sEventText1 : STRING(255) := 'This is halloween';
+	
+	EventLogger : EventLogger;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* IF NOT bBoolean THEN
+	UpdateEventTimestamptWithSystemTime(stEvent := stThisIsOurFirstInstanceOfAStructure);
+	bBoolean := TRUE;
+END_IF *)
+
+IF bBoolean THEN
+	EventLogger.AddEvent(eEventType1, eEventSeverity1, nEventIdentity1, sEventText1);
+	bBoolean := FALSE;
+END_IF
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="9" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="146" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
