@@ -34,6 +34,7 @@ END_IF;
 
 (* End of Signum: '<S1>/Sign' *)
 
+
 (* Outport: '<Root>/OrificeFlow' incorporates:
  *  Abs: '<S1>/Abs'
  *  Product: '<S1>/Product2'
@@ -45,8 +46,7 @@ OrificeFlow := ((Kv * ValveOpening) * y) * SQRT(temp1);
 ]]></ST>
     </Implementation>
     <LineIds Name="OrificeEquation">
-      <LineId Id="3" Count="14" />
-      <LineId Id="19" Count="8" />
+      <LineId Id="3" Count="24" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>

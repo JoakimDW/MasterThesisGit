@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="PressureBuildUp" Id="{464e8b07-8a4d-4793-8528-94ac640820e4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PressureBuildUp
+VAR
+	fbPressureGradient : PressureGradient;
+	fbDiscreteIntegrator : DiscreteIntegrator;
+	
+	IntegratorIn : LREAL;
+	IntegratorOut : LREAL;
+	ssMethodType : SINT := 1; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbDiscreteIntegrator(
+ssMethodType := ssMethodType,
+In1 := fbPressureGradient,
+Out1 => IntegratorOut
+);
+
+//Ikke ferdig med denne, må få til at den kjører PressureGradient gjennom DiscreteIntegrator
+//på en eller annen måte.matbutikk]]></ST>
+    </Implementation>
+    <LineIds Name="PressureBuildUp">
+      <LineId Id="20" Count="3" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="33" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

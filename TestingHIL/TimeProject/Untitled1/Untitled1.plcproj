@@ -17,10 +17,16 @@
     <LibraryReferences>{d5436aa8-d83b-4815-8c5a-fe07aeb3ec0f}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\E_EventType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_Event.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Functions\Sign.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GVLs\Param.TcGVL">
+    <Compile Include="GVLs\SimulationVariables.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
@@ -36,6 +42,9 @@
     <Compile Include="POUs\ElectricMotor.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\EventLogger.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\HydraulicCylinder.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +58,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Pump.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\UpdateEventTimestamptWithSystemTime.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

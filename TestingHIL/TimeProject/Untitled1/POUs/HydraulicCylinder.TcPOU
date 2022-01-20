@@ -13,13 +13,8 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 	PistonAcceleration: LREAL;
-	PistonVelocity : LREAL;
-	PistonPosition : LREAL;
 END_VAR
 VAR
-	ssMethodType : SINT := 1; 
-	fbPistonVelocity : DiscreteIntegrator;
-	fbPistonPosition : DiscreteIntegrator;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -35,25 +30,11 @@ END_VAR
 PistonAcceleration := (((((PressureBoreSide * AreaBoreSide) * 100000.0) - ((PressureRodSide * AreaRodSide) * 100000.0)) - FrictionForce) - LoadForcePistonFL) / PistonMass;
 (* End of Outputs for SubSystem: '<Root>/HydraulicCylinder' *)
 
-fbPistonVelocity(
-	ssMethodType := ssMethodType,
-	In1 := PistonAcceleration,
-	Out1 => PistonVelocity
-	);
-	
-fbPistonPosition(
-	ssMethodType := ssMethodType,
-	In1 := PistonVelocity,
-	Out1 => PistonPosition
-	);]]></ST>
+]]></ST>
     </Implementation>
     <LineIds Name="HydraulicCylinder">
       <LineId Id="3" Count="11" />
-      <LineId Id="37" Count="3" />
       <LineId Id="2" Count="0" />
-      <LineId Id="41" Count="0" />
-      <LineId Id="43" Count="3" />
-      <LineId Id="42" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
