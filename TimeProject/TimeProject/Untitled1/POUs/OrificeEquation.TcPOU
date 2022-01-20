@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="OrificeEquation" Id="{027f2eb5-ef8e-47ae-b5d2-50f708608699}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK OrificeEquation
+VAR_INPUT
+	PressureOut: LREAL;
+	PressureIn: LREAL;
+	Kv: LREAL;
+	ValveOpening: LREAL;
+END_VAR
+VAR_OUTPUT
+	OrificeFlow: LREAL;
+END_VAR
+VAR
+	rtb_Sum: LREAL;
+	y: LREAL;
+	temp1: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(* Outputs for Atomic SubSystem: '<Root>/OrificeEquation' *)
+(* Sum: '<S1>/Sum' *)
+rtb_Sum := PressureIn - PressureOut;
+(* Signum: '<S1>/Sign' *)
+
+IF rtb_Sum < 0.0 THEN 
+    y := -1.0;
+ELSIF rtb_Sum > 0.0 THEN 
+    y := 1.0;
+ELSE 
+    y := rtb_Sum;
+END_IF;
+
+(* End of Signum: '<S1>/Sign' *)
+
+(* Outport: '<Root>/OrificeFlow' incorporates:
+ *  Abs: '<S1>/Abs'
+ *  Product: '<S1>/Product2'
+ *  Sqrt: '<S1>/Sqrt1' *)
+temp1 := ABS(rtb_Sum);
+OrificeFlow := ((Kv * ValveOpening) * y) * SQRT(temp1);
+(* End of Outputs for SubSystem: '<Root>/OrificeEquation' *)
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="OrificeEquation">
+      <LineId Id="3" Count="14" />
+      <LineId Id="19" Count="8" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="Pump" Id="{60bcebe8-6c74-45e8-b0d4-cf2ae27250a2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Pump
+VAR_INPUT
+	MotorSpeedRPM: LREAL;
+	PumpDisplacement: LREAL;
+	DeltaMaxPressure: LREAL;
+END_VAR
+VAR_OUTPUT
+	PumpTorque: LREAL;
+	PumpFlowRate: LREAL;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(* Outputs for Atomic SubSystem: '<Root>/Pump' *)
+(* Outport: '<Root>/PumpTorque' incorporates:
+ *  Gain: '<S1>/T_Th1'
+ *  Product: '<S1>/T_Th' *)
+PumpTorque := (DeltaMaxPressure * PumpDisplacement) * 15915.494309189535;
+(* Outport: '<Root>/PumpFlowRate' incorporates:
+ *  Gain: '<S1>/Gain1'
+ *  Product: '<S1>/Q_Th' *)
+PumpFlowRate := (PumpDisplacement * MotorSpeedRPM) * 1000.0;
+(* End of Outputs for SubSystem: '<Root>/Pump' *)
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="Pump">
+      <LineId Id="3" Count="11" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="MAIN" Id="{d1c7ef4e-0337-49c7-9736-af80a39f1b25}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	//Integrator
+	ssMethodType : SINT := 1; 
+	Timer : LREAL;
+	
+	//Pressure pA
+	fbPressureGradient_pA : PressureGradient;
+	PressurepA : LREAL;
+	
+	//Pressure pB
+	fbPressureGradient_pB : PressureGradient;
+	PressurepB : LREAL;
+	
+	//Pump
+	fbPump : Pump;
+	PumpTorque : LREAL;
+	PumpFlowRate : LREAL;
+
+	//OrificeEquation
+	fbOrificeEquationQA : OrificeEquation;
+	fbOrificeEquationQB : OrificeEquation;	
+	OrificeFlow: LREAL;
+	
+	//HydraulicCylinder
+	fbHydraulicCylinder : HydraulicCylinder;
+	PressureBoreSide: LREAL;
+	PressureRodSide: LREAL;
+	AreaBoreSide: LREAL;
+	AreaRodSide: LREAL;
+	LoadForcePistonFL: LREAL;
+	FrictionForce: LREAL;
+	PistonMass: LREAL;
+
+	
+	pA : LREAL;
+	pB : LREAL;
+	qA : LREAL;
+	qB : LREAL;
+	ABore : LREAL;
+	ARod : LREAL;
+	xPos : LREAL;
+	
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Timer
+Timer := Timer + 0.01;
+
+//Area Cylinder
+ABore := EXPT(Param.DBore,2) * (Param.pi/4.0);
+ARod := (EXPT(Param.DBore,2) - EXPT(Param.DRod,2)) * (Param.pi/4.0);
+
+//Pressure Gradient pA and Pressure pA
+fbPressureGradient_pA(
+	TotalVolume := 2.9444E-04,
+	BulkModulus := 10000.0,
+	FlowrateIn := 60.0,
+	FlowrateOut := 20.0,
+	PressurePascal => PressurepA		//Pressure
+	);
+	
+//Pressure Gradient pB and Pressure pB
+fbPressureGradient_pB(
+	TotalVolume := 2.9444E-04,
+	BulkModulus := 10000.0,
+	FlowrateIn := 60.0,
+	FlowrateOut := 20.0,
+	PressurePascal => PressurepB		//Pressure
+	);
+
+//Pump
+fbPump(
+	MotorSpeedRPM := 413.2,
+	PumpDisplacement := 10.6E-6,
+	DeltaMaxPressure := 250.0,
+	PumpTorque => PumpTorque,
+	PumpFlowRate => PumpFlowRate
+	);
+	
+//OrificeEquationA (Q_A)
+fbOrificeEquationQA(
+	PressureOut := pA, 			//Found value from old simulink project, this one goes to the tank i guess
+	PressureIn := 180,		
+	Kv := 1,
+	ValveOpening := 1,	
+	OrificeFlow => OrificeFlow
+	);
+	
+//OrificeEquationB (Q_B)
+fbOrificeEquationQB(
+	PressureOut := pB, 			//Found value from old simulink project, this one goes to the tank i guess
+	PressureIn := 180,		
+	Kv := 1,
+	ValveOpening := 1,
+	OrificeFlow => OrificeFlow
+	);]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="77" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="206" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="208" Count="0" />
+      <LineId Id="207" Count="0" />
+      <LineId Id="214" Count="0" />
+      <LineId Id="101" Count="1" />
+      <LineId Id="107" Count="2" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="300" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="279" Count="0" />
+      <LineId Id="273" Count="5" />
+      <LineId Id="301" Count="0" />
+      <LineId Id="272" Count="0" />
+      <LineId Id="295" Count="0" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="125" Count="1" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="136" Count="1" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="139" Count="2" />
+      <LineId Id="148" Count="2" />
+      <LineId Id="147" Count="0" />
+      <LineId Id="145" Count="1" />
+      <LineId Id="194" Count="0" />
+      <LineId Id="196" Count="6" />
+      <LineId Id="195" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

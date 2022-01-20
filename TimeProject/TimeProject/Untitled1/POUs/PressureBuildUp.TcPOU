@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="PressureBuildUp" Id="{464e8b07-8a4d-4793-8528-94ac640820e4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PressureBuildUp
+VAR
+	fbPressureGradient : PressureGradient;
+	fbDiscreteIntegrator : DiscreteIntegrator;
+	
+	IntegratorIn : LREAL;
+	IntegratorOut : LREAL;
+	ssMethodType : SINT := 1; 
+	
+//	fbPressure : DiscreteIntegrator;
+//	fbPressureGradient : PressureGradient;
+END_VAR
+VAR_INPUT
+	TotalVolume1 : LREAL;
+	FlowrateIn1 : LREAL;
+	FlowrateOut1 : LREAL;
+END_VAR
+VAR_OUTPUT
+//	PressureBar : LREAL;
+//	PressurePascal : LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+fbPressureGradient(
+	TotalVolume := TotalVolume1,
+	FlowrateIn := FlowrateIn1,
+	FlowrateOut := FlowrateOut1
+	);
+
+//pA
+(* fbPressure(
+	ssMethodType := ssMethodType,
+	In1 := fbPressureGradient.PressureGradientPascal,
+	Out1 => PressurePascal
+	);
+	
+PressureGradientPascal := PressureGradientBar*1E5;      //Multiplies to get Pascal *)]]></ST>
+    </Implementation>
+    <LineIds Name="PressureBuildUp">
+      <LineId Id="44" Count="2" />
+      <LineId Id="48" Count="8" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="88" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
