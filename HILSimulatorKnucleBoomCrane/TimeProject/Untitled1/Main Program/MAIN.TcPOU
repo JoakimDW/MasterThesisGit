@@ -20,21 +20,21 @@ VAR
 	PumpTorque : LREAL;
 	PumpFlowRate : LREAL;
 
-	//OrificeEquation
+	//OrificeEquation QA and QB
 	fbOrificeEquationQA : OrificeEquation;
 	fbOrificeEquationQB : OrificeEquation;	
-	OrificeFlow: LREAL;
+	FlowQA : LREAL;
+	FlowQB : LREAL;
 	
 	//HydraulicCylinder
 	fbHydraulicCylinder : HydraulicCylinder;
-	PressureBoreSide: LREAL;
-	PressureRodSide: LREAL;
-	AreaBoreSide: LREAL;
-	AreaRodSide: LREAL;
-	LoadForcePistonFL: LREAL;
-	FrictionForce: LREAL;
-	PistonMass: LREAL;
-
+	PressureBoreSide : LREAL;
+	PressureRodSide : LREAL;
+	AreaBoreSide : LREAL;
+	AreaRodSide : LREAL;
+	LoadForcePistonFL : LREAL;
+	FrictionForce : LREAL;
+	PistonMass : LREAL;
 	
 	pA : LREAL;
 	pB : LREAL;
@@ -55,24 +55,6 @@ Timer := Timer + 0.01;
 ABore := EXPT(Param.DBore,2) * (Param.pi/4.0);
 ARod := (EXPT(Param.DBore,2) - EXPT(Param.DRod,2)) * (Param.pi/4.0);
 
-//Pressure Gradient pA and Pressure pA
-fbPressureGradient_pA(
-	TotalVolume := 2.9444E-04,
-	BulkModulus := 10000.0,
-	FlowrateIn := 60.0,
-	FlowrateOut := 20.0,
-	PressurePascal => PressurepA		//Pressure
-	);
-	
-//Pressure Gradient pB and Pressure pB
-fbPressureGradient_pB(
-	TotalVolume := 2.9444E-04,
-	BulkModulus := 10000.0,
-	FlowrateIn := 60.0,
-	FlowrateOut := 20.0,
-	PressurePascal => PressurepB		//Pressure
-	);
-
 //Pump
 fbPump(
 	MotorSpeedRPM := 413.2,
@@ -82,22 +64,53 @@ fbPump(
 	PumpFlowRate => PumpFlowRate
 	);
 	
+//Pressure Gradient pA and Pressure pA
+fbPressureGradient_pA(
+	TotalVolume := 2.9444E-04 + (fbHydraulicCylinder.PistonPosition * fbHydraulicCylinder.AreaBoreSide),
+	BulkModulus := 10000.0,
+	FlowrateIn := (FlowQA),
+	FlowrateOut := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.AreaBoreSide + 1),
+	PressurePascal => PressurepA		//Pressure
+	);
+	
+//Pressure Gradient pB and Pressure pB
+fbPressureGradient_pB(
+	TotalVolume := 2.9444E-04 + ((1.7 - fbHydraulicCylinder.PistonPosition) * fbHydraulicCylinder.AreaRodSide),
+	BulkModulus := 10000.0,
+	FlowrateIn := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.AreaRodSide + 1),
+	FlowrateOut := FlowQB,
+	PressurePascal => PressurepB		//Pressure
+	);
+
+
 //OrificeEquationA (Q_A)
 fbOrificeEquationQA(
-	PressureOut := pA, 			//Found value from old simulink project, this one goes to the tank i guess
-	PressureIn := 180,		
-	Kv := 1,
+	PressureOut := param.pT, 			//Found value from old simulink project, this one goes to the tank i guess
+	PressureIn := PressurepA,		
+	Kv := 0.5,
 	ValveOpening := 1,	
-	OrificeFlow => OrificeFlow
+	OrificeFlow => FlowQA
 	);
 	
 //OrificeEquationB (Q_B)
 fbOrificeEquationQB(
-	PressureOut := pB, 			//Found value from old simulink project, this one goes to the tank i guess
-	PressureIn := 180,		
-	Kv := 1,
+	PressureOut := param.pT, 			//Found value from old simulink project, this one goes to the tank i guess
+	PressureIn := PressurepB,		
+	Kv := 0.5,
 	ValveOpening := 1,
-	OrificeFlow => OrificeFlow
+	OrificeFlow => FlowQB
+	);
+	
+//Hydraulic Cylinder 1
+fbHydraulicCylinder(
+	PistonMass := 5,
+	LoadForcePistonFL := 1,
+	FrictionForce := 1,
+	AreaBoreSide := ABore,
+	AreaRodSide := ARod,
+	PressureBoreSide := PressurepA,
+	PressureRodSide := PressurepB,
+	PistonPosition => xPos
 	);]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
@@ -107,6 +120,7 @@ fbOrificeEquationQB(
       <LineId Id="118" Count="0" />
       <LineId Id="208" Count="0" />
       <LineId Id="207" Count="0" />
+      <LineId Id="348" Count="8" />
       <LineId Id="214" Count="0" />
       <LineId Id="101" Count="1" />
       <LineId Id="107" Count="2" />
@@ -118,12 +132,6 @@ fbOrificeEquationQB(
       <LineId Id="301" Count="0" />
       <LineId Id="272" Count="0" />
       <LineId Id="295" Count="0" />
-      <LineId Id="121" Count="0" />
-      <LineId Id="123" Count="0" />
-      <LineId Id="125" Count="1" />
-      <LineId Id="124" Count="0" />
-      <LineId Id="136" Count="1" />
-      <LineId Id="135" Count="0" />
       <LineId Id="139" Count="2" />
       <LineId Id="148" Count="2" />
       <LineId Id="147" Count="0" />
@@ -131,6 +139,10 @@ fbOrificeEquationQB(
       <LineId Id="194" Count="0" />
       <LineId Id="196" Count="6" />
       <LineId Id="195" Count="0" />
+      <LineId Id="357" Count="5" />
+      <LineId Id="364" Count="3" />
+      <LineId Id="369" Count="0" />
+      <LineId Id="368" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
