@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcBootProject CreateTime="2022-01-21T14:40:37">
+<TcBootProject CreateTime="2022-01-21T15:06:39">
 	<System>
 		<LockedMemSize>33554432</LockedMemSize>
 		<AffinityMask>#x80</AffinityMask>
@@ -125,9 +125,9 @@
 		</InitCmd>
 	</PostCmds>
 	<ProjectInfo>
-		<ProjectName>TimeProject</ProjectName>
+		<ProjectName>KnuckleBoomCrane</ProjectName>
 		<ProjectGuid>{0AFE8BB9-1824-40F6-9FF6-0E2CFC70EBF8}</ProjectGuid>
-		<ConfigurationFile>C:\Users\student\Desktop\JoakimDWMaster\MasterThesisGit\HILSimulatorKnucleBoomCrane\TimeProject\TimeProject.tsproj</ConfigurationFile>
+		<ConfigurationFile>C:\Users\student\Desktop\JoakimDWMaster\MasterThesisGit\KnucleBoomCranePLCsimTwinCAT\TimeProject\TimeProject.tsproj</ConfigurationFile>
 		<DataTypes/>
 		<PlcProjects/>
 		<Tasks/>
