@@ -6,12 +6,21 @@ VAR_INPUT
 	MotorSpeedRPM: LREAL;
 	PumpDisplacement: LREAL;
 	DeltaMaxPressure: LREAL;
+	PistonVelocity4Pump : LREAL;
 END_VAR
 VAR_OUTPUT
 	PumpTorque: LREAL;
 	PumpFlowRate: LREAL;
 END_VAR
 VAR
+	
+	// Trying to make the system go towards a certain set xpos
+(*	xDeviation : LREAL;
+	xSet : LREAL := 0.7;
+	vDeviation : LREAL;
+	fbVelocity : DiscreteIntegrator;
+	vDeviationPre : LREAL;
+	*)
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -27,10 +36,27 @@ PumpTorque := (DeltaMaxPressure * PumpDisplacement) * 15915.494309189535;
 PumpFlowRate := (PumpDisplacement * MotorSpeedRPM) * 1000.0;
 (* End of Outputs for SubSystem: '<Root>/Pump' *)
 
+	
+	
+// Trying to make the system go towards a certain set xpos, not sure if i need this? hmmm
+(* xDeviation := (xSet - main.xPos);
+
+fbVelocity(
+	ssMethodType := ssMethodType,
+	In1 := xDeviation,
+	Out1 => vDeviationPre
+	);
+
+vDeviation := (vDeviationPre - PistonVelocity);
+*)
 ]]></ST>
     </Implementation>
     <LineIds Name="Pump">
-      <LineId Id="3" Count="11" />
+      <LineId Id="3" Count="10" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="58" Count="10" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="69" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>

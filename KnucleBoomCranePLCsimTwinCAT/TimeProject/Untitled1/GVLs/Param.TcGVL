@@ -5,14 +5,14 @@
 VAR_GLOBAL
 	pS : LREAL := 180;
 	pT : LREAL := 1;
-	BulkModulus : LREAL := 10000;
-	Kv : LREAL := 30 / SQRT(7); 
-	DBore : LREAL := 60;
-	DRod : LREAL := 40;
-	xMax : LREAL := 1.5;
-	pi : LREAL := 3.14159265359;
-    VA0 : LREAL := 0.2;
-	VB0 : LREAL := 0.2;
+	BulkModulus : LREAL := 10000;		//[Pascal]
+	Kv : LREAL := 30 / SQRT(7); 		//[L/min / sqrt(Pascal)]
+	DBore : LREAL := 0.220;				//[m]
+	DRod : LREAL := 0.060;				//[m]
+	xMax : LREAL := 3.070;				//[m]
+	pi : LREAL := 3.14159265359;		//Value of pi
+    VA0 : LREAL := 0.002;				//[m^3]
+	VB0 : LREAL := 0.002;				//[m^3]
 
 END_VAR]]></Declaration>
   </GVL>

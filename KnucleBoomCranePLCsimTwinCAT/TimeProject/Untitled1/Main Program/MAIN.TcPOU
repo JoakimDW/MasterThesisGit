@@ -28,22 +28,23 @@ VAR
 	
 	//HydraulicCylinder
 	fbHydraulicCylinder : HydraulicCylinder;
+	
+	xPos : LREAL;
+	ABore : LREAL;
+	ARod : LREAL;
+
+(*	pA : LREAL;
+	pB : LREAL;
+	qA : LREAL;
+	qB : LREAL;
 	PressureBoreSide : LREAL;
 	PressureRodSide : LREAL;
 	AreaBoreSide : LREAL;
 	AreaRodSide : LREAL;
 	LoadForcePistonFL : LREAL;
-	FrictionForce : LREAL;
-	PistonMass : LREAL;
+	FrictionForce : LREAL;		*)
 	
-	pA : LREAL;
-	pB : LREAL;
-	qA : LREAL;
-	qB : LREAL;
-	ABore : LREAL;
-	ARod : LREAL;
-	xPos : LREAL;
-	
+	ValveOpeningControl : LREAL := 0.0;
 END_VAR
 
 ]]></Declaration>
@@ -86,18 +87,20 @@ fbPressureGradient_pB(
 //OrificeEquationA (Q_A)
 fbOrificeEquationQA(
 	PressureOut := param.pT, 			//Found value from old simulink project, this one goes to the tank i guess
-	PressureIn := PressurepA,		
+	// PressureIn := PressurepA,
+	PressureIn := 200E5,	
 	Kv := 0.5,
-	ValveOpening := 1,	
+	ValveOpening := ValveOpeningControl,	
 	OrificeFlow => FlowQA
 	);
 	
 //OrificeEquationB (Q_B)
 fbOrificeEquationQB(
 	PressureOut := param.pT, 			//Found value from old simulink project, this one goes to the tank i guess
-	PressureIn := PressurepB,		
+	// PressureIn := PressurepB,
+	PressureIn := 200E5,			
 	Kv := 0.5,
-	ValveOpening := 1,
+	ValveOpening := ValveOpeningControl,
 	OrificeFlow => FlowQB
 	);
 	
@@ -133,11 +136,16 @@ fbHydraulicCylinder(
       <LineId Id="272" Count="0" />
       <LineId Id="295" Count="0" />
       <LineId Id="139" Count="2" />
-      <LineId Id="148" Count="2" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="428" Count="0" />
+      <LineId Id="430" Count="0" />
+      <LineId Id="150" Count="0" />
       <LineId Id="147" Count="0" />
       <LineId Id="145" Count="1" />
       <LineId Id="194" Count="0" />
-      <LineId Id="196" Count="6" />
+      <LineId Id="196" Count="2" />
+      <LineId Id="429" Count="0" />
+      <LineId Id="199" Count="3" />
       <LineId Id="195" Count="0" />
       <LineId Id="357" Count="5" />
       <LineId Id="364" Count="3" />

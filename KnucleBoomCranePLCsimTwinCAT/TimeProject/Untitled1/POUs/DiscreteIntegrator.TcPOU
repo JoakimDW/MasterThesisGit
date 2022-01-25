@@ -33,13 +33,23 @@ CASE ssMethodType OF
          *  Gain: '<S1>/Gain' *)
         c_DiscreteIntegratorMain_DS := ((k1 * In1) * StepTime) + c_DiscreteIntegratorMain_DS;
         (* End of Outputs for SubSystem: '<Root>/DiscreteIntegrator' *)
+		
+		IF c_DiscreteIntegratorMain_DS >= 1337.0 THEN 
+            c_DiscreteIntegratorMain_DS := 1337.0;
+        ELSIF c_DiscreteIntegratorMain_DS <= -1337.0 THEN 
+            c_DiscreteIntegratorMain_DS := -1337.0;
+        END_IF;
 END_CASE;
 
 
 ]]></ST>
     </Implementation>
     <LineIds Name="DiscreteIntegrator">
-      <LineId Id="3" Count="19" />
+      <LineId Id="3" Count="16" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="38" Count="3" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="20" Count="2" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>

@@ -32,7 +32,7 @@ END_VAR
  *  Product: '<S1>/Product'
  *  Product: '<S1>/Product1'
  *  Sum: '<S1>/sum' *)
-PistonAcceleration := (((((PressureBoreSide * AreaBoreSide) * 100000.0) - ((PressureRodSide * AreaRodSide) * 100000.0)) - FrictionForce) - LoadForcePistonFL) / PistonMass;
+PistonAcceleration := (((((PressureBoreSide * AreaBoreSide)) - ((PressureRodSide * AreaRodSide))) - FrictionForce) - LoadForcePistonFL) / PistonMass;
 (* End of Outputs for SubSystem: '<Root>/HydraulicCylinder' *)
 
 fbPistonVelocity(
@@ -45,7 +45,8 @@ fbPistonPosition(
 	ssMethodType := ssMethodType,
 	In1 := PistonVelocity,
 	Out1 => PistonPosition
-	);]]></ST>
+	);
+]]></ST>
     </Implementation>
     <LineIds Name="HydraulicCylinder">
       <LineId Id="3" Count="11" />
@@ -54,6 +55,7 @@ fbPistonPosition(
       <LineId Id="41" Count="0" />
       <LineId Id="43" Count="3" />
       <LineId Id="42" Count="0" />
+      <LineId Id="68" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

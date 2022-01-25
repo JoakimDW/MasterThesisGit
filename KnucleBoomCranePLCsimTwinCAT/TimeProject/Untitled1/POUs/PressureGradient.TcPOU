@@ -16,7 +16,7 @@ VAR_OUTPUT
 END_VAR
 VAR
 	ssMethodType : SINT := 1; 
-	fbPressureBar : DiscreteIntegrator;
+	fbPressurePascal : DiscreteIntegrator;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -28,24 +28,19 @@ END_VAR
  *  Product: '<S1>/Product1'
  *  Sum: '<S1>/Sum' *)
  
-//PressureGradient in [Bar/s]
-PressureGradientBar := ((FlowrateIn - FlowrateOut) * 1.6666666666666667E-5) * (Param.BulkModulus / TotalVolume);
+//PressureGradient in [Pascal/s]
+PressureGradientPascal := ((FlowrateIn - FlowrateOut) * 1.6666666666666667E-5) * (Param.BulkModulus / TotalVolume) * 1E5;
 (* End of Outputs for SubSystem: '<Root>/PressureGradient' *)
 
-//Multiplies to get [Pascal/s]
-PressureGradientPascal := PressureGradientBar*1E5; 
 
 //Pressure in [Pascal]
-fbPressureBar(
+fbPressurePascal(
 	ssMethodType := ssMethodType,
-	In1 := PressureGradientBar,
-	Out1 => PressureBar
+	In1 := PressureGradientPascal,
+	Out1 => PressurePascal
 	);
 
-//Pressure in [Bar]
-PressurePascal := PressureBar*1E5;
 
-     
 
 ]]></ST>
     </Implementation>
@@ -54,17 +49,12 @@ PressurePascal := PressureBar*1E5;
       <LineId Id="50" Count="0" />
       <LineId Id="49" Count="0" />
       <LineId Id="10" Count="1" />
-      <LineId Id="48" Count="0" />
-      <LineId Id="28" Count="0" />
       <LineId Id="27" Count="0" />
       <LineId Id="78" Count="0" />
       <LineId Id="67" Count="4" />
       <LineId Id="60" Count="0" />
-      <LineId Id="79" Count="0" />
-      <LineId Id="72" Count="0" />
       <LineId Id="59" Count="0" />
-      <LineId Id="54" Count="0" />
-      <LineId Id="53" Count="0" />
+      <LineId Id="102" Count="0" />
       <LineId Id="45" Count="0" />
       <LineId Id="44" Count="0" />
     </LineIds>
