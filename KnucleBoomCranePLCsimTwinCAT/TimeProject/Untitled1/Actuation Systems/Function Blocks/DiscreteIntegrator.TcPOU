@@ -5,8 +5,7 @@
 VAR_INPUT
 	ssMethodType: SINT;
 	In1: LREAL;
-	StepTime : LREAL := 0.01;
-	par : ST_pValveControlledCylinder;
+	StepTime : LREAL := 0.001;
 END_VAR
 VAR_OUTPUT
 	Out1: LREAL;
@@ -36,11 +35,7 @@ CASE ssMethodType OF
         c_DiscreteIntegratorMain_DS := ((k1 * In1) * StepTime) + c_DiscreteIntegratorMain_DS;
         (* End of Outputs for SubSystem: '<Root>/DiscreteIntegrator' *)
 		
-		IF c_DiscreteIntegratorMain_DS >= 1337.0 THEN 
-            c_DiscreteIntegratorMain_DS := 1337.0;
-        ELSIF c_DiscreteIntegratorMain_DS <= -1337.0 THEN 
-            c_DiscreteIntegratorMain_DS := -1337.0;
-        END_IF;
+
 END_CASE;
 
 
@@ -48,9 +43,7 @@ END_CASE;
     </Implementation>
     <LineIds Name="DiscreteIntegrator">
       <LineId Id="3" Count="16" />
-      <LineId Id="36" Count="0" />
-      <LineId Id="38" Count="3" />
-      <LineId Id="37" Count="0" />
+      <LineId Id="36" Count="1" />
       <LineId Id="20" Count="2" />
       <LineId Id="2" Count="0" />
     </LineIds>

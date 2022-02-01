@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="DiscreteTimeIntegrator_Init" Id="{4adbae3e-24df-4455-b26a-f1991cd2862f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK DiscreteTimeIntegrator_Init
+VAR_INPUT
+	ssMethodType: SINT;
+	In: LREAL;
+	Init: LREAL;
+	minOut : LREAL;
+	maxOut : LREAL;
+END_VAR
+VAR_OUTPUT
+	Out: LREAL;
+END_VAR
+VAR
+	c_DiscreteTimeIntegrator_IC: USINT;
+	c_DiscreteTimeIntegrator_DS: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+CASE ssMethodType OF
+    0: 
+        (* SystemInitialize for Atomic SubSystem: '<Root>/DiscreteTimeIntegrator_Init' *)
+        (* InitializeConditions for DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+        c_DiscreteTimeIntegrator_IC := 1;
+        (* End of SystemInitialize for SubSystem: '<Root>/DiscreteTimeIntegrator_Init' *)
+    1: 
+        (* Outputs for Atomic SubSystem: '<Root>/DiscreteTimeIntegrator_Init' *)
+        (* DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+
+        IF c_DiscreteTimeIntegrator_IC <> 0 THEN 
+            c_DiscreteTimeIntegrator_DS := Init;
+
+            IF c_DiscreteTimeIntegrator_DS >= maxOut THEN 
+                c_DiscreteTimeIntegrator_DS := maxOut;
+            ELSIF c_DiscreteTimeIntegrator_DS <= minOut THEN 
+                c_DiscreteTimeIntegrator_DS := minOut;
+            END_IF;
+
+        END_IF;
+
+
+        IF c_DiscreteTimeIntegrator_DS >= maxOut THEN 
+            c_DiscreteTimeIntegrator_DS := maxOut;
+        ELSIF c_DiscreteTimeIntegrator_DS <= minOut THEN 
+            c_DiscreteTimeIntegrator_DS := minOut;
+        END_IF;
+
+        (* Outport: '<Root>/Out' incorporates:
+         *  DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+        Out := c_DiscreteTimeIntegrator_DS;
+        (* Update for DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+        c_DiscreteTimeIntegrator_IC := 0;
+        c_DiscreteTimeIntegrator_DS := (0.001 * In) + c_DiscreteTimeIntegrator_DS;
+
+        IF c_DiscreteTimeIntegrator_DS >= maxOut THEN 
+            c_DiscreteTimeIntegrator_DS := maxOut;
+        ELSIF c_DiscreteTimeIntegrator_DS <= minOut THEN 
+            c_DiscreteTimeIntegrator_DS := minOut;
+        END_IF;
+
+        (* End of Update for DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+        (* End of Outputs for SubSystem: '<Root>/DiscreteTimeIntegrator_Init' *)
+END_CASE;
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="DiscreteTimeIntegrator_Init">
+      <LineId Id="3" Count="47" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

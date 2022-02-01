@@ -17,7 +17,13 @@
     <LibraryReferences>{d5436aa8-d83b-4815-8c5a-fe07aeb3ec0f}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Actuation Systems\Function Blocks\BulkModulus.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Actuation Systems\Function Blocks\DiscreteIntegrator.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\DiscreteTimeIntegrator_Init.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Actuation Systems\Function Blocks\ElectricMotor.TcPOU">

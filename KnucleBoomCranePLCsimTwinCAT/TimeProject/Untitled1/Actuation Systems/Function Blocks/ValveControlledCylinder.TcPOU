@@ -10,8 +10,6 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-//Integrator
-ssMethodType : SINT := 1; 
 
 //Pressure pA
 fbPressureGradient_pA : PressureGradient;
@@ -31,52 +29,41 @@ FlowQB : LREAL;
 fbHydraulicCylinder : HydraulicCylinder;
 
 xPos : LREAL;
-
-
-(*	pA : LREAL;
-pB : LREAL;
-qA : LREAL;
-qB : LREAL;
-PressureBoreSide : LREAL;
-PressureRodSide : LREAL;
-AreaBoreSide : LREAL;
-AreaRodSide : LREAL;
-LoadForcePistonFL : LREAL;
-FrictionForce : LREAL;		*)
-
 ValveOpeningControl : LREAL := 0.0;
-ABore : LREAL;
-ARod : LREAL;
+
+fbBulkModulus : BulkModulus;
 
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-//Pressure Gradient pA and Pressure pA
+      <ST><![CDATA[//Pressure Gradient pA and Pressure pA
 fbPressureGradient_pA(
-	TotalVolume := 2.9444E-04 + (fbHydraulicCylinder.PistonPosition * fbHydraulicCylinder.ABore),
-	BulkModulus := 10000.0,
-	FlowrateIn := (FlowQA),
-	FlowrateOut := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.ABore + 1),
-	PressurePascal => PressurepA		//Pressure
-	);
-	
-//Pressure Gradient pB and Pressure pB
-fbPressureGradient_pB(
-	TotalVolume := 2.9444E-04 + ((1.7 - fbHydraulicCylinder.PistonPosition) * fbHydraulicCylinder.ARod),
-	BulkModulus := 10000.0,
-	FlowrateIn := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.ARod + 1),
-	FlowrateOut := FlowQB,
-	PressurePascal => PressurepB		//Pressure
+	TotalVolume := par.VA0 + (fbHydraulicCylinder.PistonPosition * fbHydraulicCylinder.Aa),
+	BulkModulus := fbBulkModulus.BulkModulus,
+	FlowrateIn := FlowQA,
+	FlowrateOut := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.Aa*0),
+	p0 := par.pA0,
+	param := par,
+	Pressure => PressurepA		//Pressure
 	);
 
+//Pressure Gradient pB and Pressure pB
+fbPressureGradient_pB(
+	TotalVolume := par.VB0 + ((par.xMax - fbHydraulicCylinder.PistonPosition) * fbHydraulicCylinder.Ab),
+	BulkModulus := fbBulkModulus.BulkModulus,
+	FlowrateIn := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.Ab),
+	FlowrateOut := FlowQB,
+	p0 := par.pB0,
+	param := par,
+	Pressure => PressurepB		//Pressure
+	);
 
 //OrificeEquationA (Q_A)
 fbOrificeEquationQA(
 	PressureOut := PressurepA, 			//Found value from old simulink project, this one goes to the tank i guess
 	PressureIn := SupplyPressure,	
-	Kv := 0.5,
 	ValveOpening := ValveOpeningControl,	
+	param := par,
 	OrificeFlow => FlowQA
 	);
 	
@@ -84,29 +71,39 @@ fbOrificeEquationQA(
 fbOrificeEquationQB(
 	PressureOut := ReturnPressure, 			//Found value from old simulink project, this one goes to the tank i guess
 	PressureIn := PressurepB,			
-	Kv := 0.5,
 	ValveOpening := ValveOpeningControl,
+	param := par,
 	OrificeFlow => FlowQB
 	);
 	
 //Hydraulic Cylinder 1
 fbHydraulicCylinder(
-	PistonMass := 5,
-	LoadForcePistonFL := 1,
-	FrictionForce := 1,
-	ABore := fbHydraulicCylinder.ABore,
-	ARod := fbHydraulicCylinder.ARod,
 	PressureBoreSide := PressurepA,
 	PressureRodSide := PressurepB,
 	PistonPosition => xPos,
-	par := Param.pMainJibCylinder
+	param := Param.pMainJibCylinder
 	);
 	]]></ST>
     </Implementation>
     <LineIds Name="ValveControlledCylinder">
-      <LineId Id="22" Count="22" />
-      <LineId Id="46" Count="9" />
-      <LineId Id="57" Count="14" />
+      <LineId Id="23" Count="5" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="131" Count="0" />
+      <LineId Id="32" Count="5" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="41" Count="3" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="49" Count="6" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="59" Count="4" />
+      <LineId Id="69" Count="2" />
       <LineId Id="121" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="120" Count="0" />

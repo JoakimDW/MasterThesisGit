@@ -22,7 +22,7 @@ END_VAR
 fbPump(
 MotorSpeedRPM := 413.2,
 PumpDisplacement := 10.6E-6,
-DeltaMaxPressure := 250.0,
+DeltaMaxPressure := 250.0E5,
 PumpTorque => PumpTorque,
 PumpFlowRate => PumpFlowRate
 );

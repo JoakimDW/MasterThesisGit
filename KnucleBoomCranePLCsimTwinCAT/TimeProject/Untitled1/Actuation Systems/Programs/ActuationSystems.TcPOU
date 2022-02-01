@@ -4,12 +4,13 @@
     <Declaration><![CDATA[PROGRAM ActuationSystems
 VAR
 fbMainJibCylinder : ValveControlledCylinder;
-fbKnuckleJibCylinder : ValveControlledCylinder;
+//fbKnuckleJibCylinder : ValveControlledCylinder;
 fbHPU : HPU;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbHPU(
+      <ST><![CDATA[
+fbHPU(
 );
 
 fbMainJibCylinder(
@@ -18,11 +19,11 @@ SupplyPressure := G_ActuationSystems.SupplyPressure,
 par := Param.pMainJibCylinder
 );
 
-fbKnuckleJibCylinder(
+(* fbKnuckleJibCylinder(
 ReturnPressure := G_ActuationSystems.ReturnPressure,
 SupplyPressure := G_ActuationSystems.SupplyPressure,
 par := Param.pMainKnuckleCylinder
-);
+); *)
 
 
 
@@ -30,6 +31,7 @@ par := Param.pMainKnuckleCylinder
 ]]></ST>
     </Implementation>
     <LineIds Name="ActuationSystems">
+      <LineId Id="39" Count="0" />
       <LineId Id="31" Count="0" />
       <LineId Id="30" Count="0" />
       <LineId Id="34" Count="0" />

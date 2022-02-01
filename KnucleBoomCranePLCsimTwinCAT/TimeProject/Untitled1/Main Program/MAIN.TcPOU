@@ -3,50 +3,17 @@
   <POU Name="MAIN" Id="{d1c7ef4e-0337-49c7-9736-af80a39f1b25}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	//Integrator
-	ssMethodType : SINT := 1; 
+
 	Timer : LREAL;
 	
-	//Pressure pA
-	fbPressureGradient_pA : PressureGradient;
-	PressurepA : LREAL;
-	
-	//Pressure pB
-	fbPressureGradient_pB : PressureGradient;
-	PressurepB : LREAL;
 
-	//OrificeEquation QA and QB
-	fbOrificeEquationQA : OrificeEquation;
-	fbOrificeEquationQB : OrificeEquation;	
-	FlowQA : LREAL;
-	FlowQB : LREAL;
-	
-	//HydraulicCylinder
-	fbHydraulicCylinder : HydraulicCylinder;
-	
-	xPos : LREAL;
-
-
-(*	pA : LREAL;
-	pB : LREAL;
-	qA : LREAL;
-	qB : LREAL;
-	PressureBoreSide : LREAL;
-	PressureRodSide : LREAL;
-	AreaBoreSide : LREAL;
-	AreaRodSide : LREAL;
-	LoadForcePistonFL : LREAL;
-	FrictionForce : LREAL;		*)
-	
-	ValveOpeningControl : LREAL := 0.0;
-	
 	
 END_VAR
 
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//Timer
-Timer := Timer + 0.01;
+Timer := Timer + 0.001;
 
 ActuationSystems();]]></ST>
     </Implementation>

@@ -5,9 +5,8 @@
 VAR_INPUT
 	PressureOut: LREAL;
 	PressureIn: LREAL;
-	Kv: LREAL;
 	ValveOpening: LREAL;
-	par : ST_pValveControlledCylinder;
+	param : ST_pValveControlledCylinder;
 END_VAR
 VAR_OUTPUT
 	OrificeFlow: LREAL;
@@ -23,7 +22,7 @@ END_VAR
       <ST><![CDATA[
 (* Outputs for Atomic SubSystem: '<Root>/OrificeEquation' *)
 (* Sum: '<S1>/Sum' *)
-rtb_Sum := PressureIn - PressureOut;
+rtb_Sum := (PressureIn - PressureOut)*1E-5;
 (* Signum: '<S1>/Sign' *)
 
 IF rtb_Sum < 0.0 THEN 
@@ -41,7 +40,7 @@ END_IF;
  *  Product: '<S1>/Product2'
  *  Sqrt: '<S1>/Sqrt1' *)
 temp1 := ABS(rtb_Sum);
-OrificeFlow := ((Kv * ValveOpening) * y) * SQRT(temp1);
+OrificeFlow := (((param.Kv * ValveOpening) * y) * SQRT(temp1)) * (1/60000);
 (* End of Outputs for SubSystem: '<Root>/OrificeEquation' *)
 
 ]]></ST>

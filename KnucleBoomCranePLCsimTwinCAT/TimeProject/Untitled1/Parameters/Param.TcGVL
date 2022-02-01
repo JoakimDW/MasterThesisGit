@@ -4,7 +4,7 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	pMainJibCylinder : ST_pValveControlledCylinder;
-	pMainKnuckleCylinder : ST_pValveControlledCylinder;
+	//pMainKnuckleCylinder : ST_pValveControlledCylinder;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

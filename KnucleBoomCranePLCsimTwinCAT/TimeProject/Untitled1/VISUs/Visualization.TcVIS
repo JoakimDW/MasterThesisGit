@@ -16,7 +16,7 @@
                   <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                     <o>
                       <v n="Id">1404881523L</v>
-                      <v n="Value" t="Single">0</v>
+                      <v n="Value" t="Single">-1</v>
                     </o>
                     <o>
                       <v n="Id">3837067714L</v>
@@ -68,11 +68,11 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value">226</v>
+                      <v n="Value">284</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value">137</v>
+                      <v n="Value">161</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -116,7 +116,7 @@
                     </o>
                     <o>
                       <v n="Id">397264524L</v>
-                      <v n="Value">"MAIN.ValveOpeningControl"</v>
+                      <v n="Value">"ActuationSystems.fbMainJibCylinder.ValveOpeningControl"</v>
                     </o>
                     <o>
                       <v n="Id">3352862552L</v>
@@ -248,10 +248,10 @@
               <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
                 <v>FB_Init</v>
                 <v>226398f7-9171-4325-b2a9-c9f5b8637bdf</v>
-                <v>FB_Reinit</v>
-                <v>9e88d963-8e91-4110-947f-b5559ea2e134</v>
                 <v>FB_Exit</v>
                 <v>1c5a6ecf-5d33-4b70-9a96-4f5a38148733</v>
+                <v>FB_Reinit</v>
+                <v>9e88d963-8e91-4110-947f-b5559ea2e134</v>
               </d>
               <v n="FbName">"NotImportant"</v>
               <v n="FbGuid">{8f27811e-7a96-4c0c-8f64-813110ff9a70}</v>
@@ -332,13 +332,13 @@
             <d2 n="Size" ckt="Int32" cvt="VisualObjectSize">
               <v>0</v>
               <o>
-                <v n="Width">753</v>
-                <v n="Height">216</v>
+                <v n="Width">811</v>
+                <v n="Height">240</v>
               </o>
               <v>1</v>
               <o>
-                <v n="Width">754</v>
-                <v n="Height">217</v>
+                <v n="Width">812</v>
+                <v n="Height">241</v>
               </o>
             </d2>
             <v n="Version">1</v>
