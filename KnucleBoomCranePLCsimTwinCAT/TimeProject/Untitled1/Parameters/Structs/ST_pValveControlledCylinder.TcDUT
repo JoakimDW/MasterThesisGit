@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <DUT Name="ST_pValveControlledCylinder" Id="{78f846a6-6b02-4cbc-8d8a-455fc5dcc97d}">
+    <Declaration><![CDATA[TYPE ST_pValveControlledCylinder :
+STRUCT
+	BulkModulus : LREAL := 10000;		//[Pascal]
+	Kv : LREAL := 30 / SQRT(7); 		//[L/min / sqrt(Pascal)]
+	DBore : LREAL := 0.220;				//[m]
+	DRod : LREAL := 0.060;				//[m]
+	xMax : LREAL := 3.070;				//[m]
+	pi : LREAL := 3.14159265359;		//Value of pi
+    VA0 : LREAL := 0.002;				//[m^3]
+	VB0 : LREAL := 0.002;				//[m^3]
+	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

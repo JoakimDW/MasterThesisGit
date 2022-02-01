@@ -14,11 +14,6 @@ VAR
 	//Pressure pB
 	fbPressureGradient_pB : PressureGradient;
 	PressurepB : LREAL;
-	
-	//Pump
-	fbPump : Pump;
-	PumpTorque : LREAL;
-	PumpFlowRate : LREAL;
 
 	//OrificeEquation QA and QB
 	fbOrificeEquationQA : OrificeEquation;
@@ -30,8 +25,7 @@ VAR
 	fbHydraulicCylinder : HydraulicCylinder;
 	
 	xPos : LREAL;
-	ABore : LREAL;
-	ARod : LREAL;
+
 
 (*	pA : LREAL;
 	pB : LREAL;
@@ -45,6 +39,8 @@ VAR
 	FrictionForce : LREAL;		*)
 	
 	ValveOpeningControl : LREAL := 0.0;
+	
+	
 END_VAR
 
 ]]></Declaration>
@@ -52,104 +48,12 @@ END_VAR
       <ST><![CDATA[//Timer
 Timer := Timer + 0.01;
 
-//Area Cylinder
-ABore := EXPT(Param.DBore,2) * (Param.pi/4.0);
-ARod := (EXPT(Param.DBore,2) - EXPT(Param.DRod,2)) * (Param.pi/4.0);
-
-//Pump
-fbPump(
-	MotorSpeedRPM := 413.2,
-	PumpDisplacement := 10.6E-6,
-	DeltaMaxPressure := 250.0,
-	PumpTorque => PumpTorque,
-	PumpFlowRate => PumpFlowRate
-	);
-	
-//Pressure Gradient pA and Pressure pA
-fbPressureGradient_pA(
-	TotalVolume := 2.9444E-04 + (fbHydraulicCylinder.PistonPosition * fbHydraulicCylinder.AreaBoreSide),
-	BulkModulus := 10000.0,
-	FlowrateIn := (FlowQA),
-	FlowrateOut := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.AreaBoreSide + 1),
-	PressurePascal => PressurepA		//Pressure
-	);
-	
-//Pressure Gradient pB and Pressure pB
-fbPressureGradient_pB(
-	TotalVolume := 2.9444E-04 + ((1.7 - fbHydraulicCylinder.PistonPosition) * fbHydraulicCylinder.AreaRodSide),
-	BulkModulus := 10000.0,
-	FlowrateIn := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.AreaRodSide + 1),
-	FlowrateOut := FlowQB,
-	PressurePascal => PressurepB		//Pressure
-	);
-
-
-//OrificeEquationA (Q_A)
-fbOrificeEquationQA(
-	PressureOut := param.pT, 			//Found value from old simulink project, this one goes to the tank i guess
-	// PressureIn := PressurepA,
-	PressureIn := 200E5,	
-	Kv := 0.5,
-	ValveOpening := ValveOpeningControl,	
-	OrificeFlow => FlowQA
-	);
-	
-//OrificeEquationB (Q_B)
-fbOrificeEquationQB(
-	PressureOut := param.pT, 			//Found value from old simulink project, this one goes to the tank i guess
-	// PressureIn := PressurepB,
-	PressureIn := 200E5,			
-	Kv := 0.5,
-	ValveOpening := ValveOpeningControl,
-	OrificeFlow => FlowQB
-	);
-	
-//Hydraulic Cylinder 1
-fbHydraulicCylinder(
-	PistonMass := 5,
-	LoadForcePistonFL := 1,
-	FrictionForce := 1,
-	AreaBoreSide := ABore,
-	AreaRodSide := ARod,
-	PressureBoreSide := PressurepA,
-	PressureRodSide := PressurepB,
-	PistonPosition => xPos
-	);]]></ST>
+ActuationSystems();]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="77" Count="0" />
       <LineId Id="44" Count="0" />
-      <LineId Id="206" Count="0" />
-      <LineId Id="118" Count="0" />
-      <LineId Id="208" Count="0" />
-      <LineId Id="207" Count="0" />
-      <LineId Id="348" Count="8" />
-      <LineId Id="214" Count="0" />
-      <LineId Id="101" Count="1" />
-      <LineId Id="107" Count="2" />
-      <LineId Id="106" Count="0" />
-      <LineId Id="300" Count="0" />
-      <LineId Id="110" Count="0" />
-      <LineId Id="279" Count="0" />
-      <LineId Id="273" Count="5" />
-      <LineId Id="301" Count="0" />
-      <LineId Id="272" Count="0" />
-      <LineId Id="295" Count="0" />
-      <LineId Id="139" Count="2" />
-      <LineId Id="148" Count="0" />
-      <LineId Id="428" Count="0" />
-      <LineId Id="430" Count="0" />
-      <LineId Id="150" Count="0" />
-      <LineId Id="147" Count="0" />
-      <LineId Id="145" Count="1" />
-      <LineId Id="194" Count="0" />
-      <LineId Id="196" Count="2" />
-      <LineId Id="429" Count="0" />
-      <LineId Id="199" Count="3" />
-      <LineId Id="195" Count="0" />
-      <LineId Id="357" Count="5" />
-      <LineId Id="364" Count="3" />
-      <LineId Id="369" Count="0" />
+      <LineId Id="413" Count="0" />
       <LineId Id="368" Count="0" />
     </LineIds>
   </POU>
