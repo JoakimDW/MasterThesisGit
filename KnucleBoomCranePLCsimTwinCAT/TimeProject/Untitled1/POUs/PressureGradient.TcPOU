@@ -29,7 +29,7 @@ END_VAR
  *  Sum: '<S1>/Sum' *)
  
 //PressureGradient in [Pascal/s]
-PressureGradientPascal := ((FlowrateIn - FlowrateOut) * 1.6666666666666667E-5) * (Param.BulkModulus / TotalVolume) * 1E5;
+PressureGradientPascal := ((FlowrateIn - FlowrateOut)) * (Param.BulkModulus / TotalVolume) * 1E5;
 (* End of Outputs for SubSystem: '<Root>/PressureGradient' *)
 
 

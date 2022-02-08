@@ -67,18 +67,18 @@ fbPump(
 	
 //Pressure Gradient pA and Pressure pA
 fbPressureGradient_pA(
-	TotalVolume := 2.9444E-04 + (fbHydraulicCylinder.PistonPosition * fbHydraulicCylinder.AreaBoreSide),
-	BulkModulus := 10000.0,
+	TotalVolume := 0.1E-3 + (fbHydraulicCylinder.PistonPosition * fbHydraulicCylinder.AreaBoreSide),
+	BulkModulus := param.BulkModulus,
 	FlowrateIn := (FlowQA),
-	FlowrateOut := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.AreaBoreSide + 1),
+	FlowrateOut := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.AreaBoreSide),
 	PressurePascal => PressurepA		//Pressure
 	);
 	
 //Pressure Gradient pB and Pressure pB
 fbPressureGradient_pB(
-	TotalVolume := 2.9444E-04 + ((1.7 - fbHydraulicCylinder.PistonPosition) * fbHydraulicCylinder.AreaRodSide),
-	BulkModulus := 10000.0,
-	FlowrateIn := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.AreaRodSide + 1),
+	TotalVolume := 0.1E-3 + ((param.xMax - fbHydraulicCylinder.PistonPosition) * fbHydraulicCylinder.AreaRodSide),
+	BulkModulus := param.BulkModulus,
+	FlowrateIn := (fbHydraulicCylinder.PistonVelocity * fbHydraulicCylinder.AreaRodSide),
 	FlowrateOut := FlowQB,
 	PressurePascal => PressurepB		//Pressure
 	);
@@ -86,10 +86,9 @@ fbPressureGradient_pB(
 
 //OrificeEquationA (Q_A)
 fbOrificeEquationQA(
-	PressureOut := param.pT, 			//Found value from old simulink project, this one goes to the tank i guess
-	// PressureIn := PressurepA,
-	PressureIn := 200E5,	
-	Kv := 0.5,
+	PressureOut := PressurepA, 			//Found value from old simulink project, this one goes to the tank i guess
+	PressureIn := param.pS,	
+	Kv := param.Kv,
 	ValveOpening := ValveOpeningControl,	
 	OrificeFlow => FlowQA
 	);
@@ -97,9 +96,8 @@ fbOrificeEquationQA(
 //OrificeEquationB (Q_B)
 fbOrificeEquationQB(
 	PressureOut := param.pT, 			//Found value from old simulink project, this one goes to the tank i guess
-	// PressureIn := PressurepB,
-	PressureIn := 200E5,			
-	Kv := 0.5,
+	PressureIn := PressurepB,		
+	Kv := param.Kv,
 	ValveOpening := ValveOpeningControl,
 	OrificeFlow => FlowQB
 	);
@@ -107,8 +105,8 @@ fbOrificeEquationQB(
 //Hydraulic Cylinder 1
 fbHydraulicCylinder(
 	PistonMass := 5,
-	LoadForcePistonFL := 1,
-	FrictionForce := 1,
+	LoadForcePistonFL := 25000*3.14,
+	FrictionForce := 10000,
 	AreaBoreSide := ABore,
 	AreaRodSide := ARod,
 	PressureBoreSide := PressurepA,
@@ -138,14 +136,13 @@ fbHydraulicCylinder(
       <LineId Id="139" Count="2" />
       <LineId Id="148" Count="0" />
       <LineId Id="428" Count="0" />
-      <LineId Id="430" Count="0" />
       <LineId Id="150" Count="0" />
       <LineId Id="147" Count="0" />
       <LineId Id="145" Count="1" />
       <LineId Id="194" Count="0" />
       <LineId Id="196" Count="2" />
       <LineId Id="429" Count="0" />
-      <LineId Id="199" Count="3" />
+      <LineId Id="200" Count="2" />
       <LineId Id="195" Count="0" />
       <LineId Id="357" Count="5" />
       <LineId Id="364" Count="3" />

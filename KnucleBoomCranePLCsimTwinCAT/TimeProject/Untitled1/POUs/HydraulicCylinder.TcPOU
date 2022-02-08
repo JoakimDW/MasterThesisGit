@@ -32,7 +32,7 @@ END_VAR
  *  Product: '<S1>/Product'
  *  Product: '<S1>/Product1'
  *  Sum: '<S1>/sum' *)
-PistonAcceleration := (((((PressureBoreSide * AreaBoreSide)) - ((PressureRodSide * AreaRodSide))) - FrictionForce) - LoadForcePistonFL) / PistonMass;
+PistonAcceleration := ((PressureBoreSide * AreaBoreSide) - (PressureRodSide * AreaRodSide) - (FrictionForce * PistonVelocity) - LoadForcePistonFL) / PistonMass;
 (* End of Outputs for SubSystem: '<Root>/HydraulicCylinder' *)
 
 fbPistonVelocity(

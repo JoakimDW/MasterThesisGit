@@ -39,7 +39,7 @@ END_IF;
  *  Product: '<S1>/Product2'
  *  Sqrt: '<S1>/Sqrt1' *)
 temp1 := ABS(rtb_Sum);
-OrificeFlow := ((Kv * ValveOpening) * y) * SQRT(temp1);
+OrificeFlow := (((Kv * ValveOpening) * y) * SQRT(temp1))*(1/60000);
 (* End of Outputs for SubSystem: '<Root>/OrificeEquation' *)
 
 ]]></ST>
