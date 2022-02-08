@@ -17,41 +17,63 @@
     <LibraryReferences>{d5436aa8-d83b-4815-8c5a-fe07aeb3ec0f}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Actuation Systems\Function Blocks\BulkModulus.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\DiscreteIntegrator.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\DiscreteTimeIntegrator_Init.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\ElectricMotor.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\HPU.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\HydraulicCylinder.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\OrificeEquation.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\PressureBuildUp.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\PressureGradient.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\Pump.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\ValveControlledCylinder.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\GVL\G_ActuationSystems.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="Actuation Systems\Programs\ActuationSystems.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Functions\Sign.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GVLs\Param.TcGVL">
-      <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
-    </Compile>
     <Compile Include="Main Program\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Parameters\Param.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="Parameters\Structs\ST_pValveControlledCylinder.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\DiscreteIntegrator.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\ElectricMotor.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\HydraulicCylinder.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\OrificeEquation.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\PressureBuildUp.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\PressureGradient.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Pump.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Visualization Manager.TcVMO">
@@ -63,12 +85,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Actuation Systems\GVL" />
+    <Folder Include="Actuation Systems\Function Blocks" />
+    <Folder Include="Actuation Systems\Functions" />
+    <Folder Include="Actuation Systems\Structs" />
+    <Folder Include="Actuation Systems\Programs" />
     <Folder Include="DUTs" />
-    <Folder Include="GVLs" />
     <Folder Include="Main Program" />
     <Folder Include="Functions" />
+    <Folder Include="Actuation Systems" />
+    <Folder Include="Parameters" />
+    <Folder Include="Parameters\Structs" />
     <Folder Include="VISUs" />
-    <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
     <PlaceholderReference Include="System_VisuElemMeter">
@@ -129,6 +157,10 @@
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="VisuDialogs">
+      <DefaultResolution>VisuDialogs, * (System)</DefaultResolution>
+      <Namespace>VisuDialogs</Namespace>
+    </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Untitled1.tmc">
@@ -143,8 +175,8 @@
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-  <Data>
-    <o xml:space="preserve" t="OptionKey">
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
@@ -193,14 +225,14 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-  </Data>
-  <TypeList>
-    <Type n="Boolean">System.Boolean</Type>
-    <Type n="Hashtable">System.Collections.Hashtable</Type>
-    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-    <Type n="String">System.String</Type>
-  </TypeList>
-</XmlArchive>
+        </Data>
+        <TypeList>
+          <Type n="Boolean">System.Boolean</Type>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

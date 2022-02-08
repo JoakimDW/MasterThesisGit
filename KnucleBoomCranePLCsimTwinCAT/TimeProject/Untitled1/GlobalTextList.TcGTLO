@@ -21,6 +21,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"37"</v>
+              <v n="TextDefault">"%1f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"729"</v>
               <v n="TextDefault">"%2f"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -28,6 +33,11 @@
             <o>
               <v n="TextID">"210"</v>
               <v n="TextDefault">"%f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"342"</v>
+              <v n="TextDefault">"%f [-]"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -53,6 +63,26 @@
             <o>
               <v n="TextID">"842"</v>
               <v n="TextDefault">"0"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"81"</v>
+              <v n="TextDefault">"uDCV"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"164"</v>
+              <v n="TextDefault">"uDCV:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"387"</v>
+              <v n="TextDefault">"Valve Control Enable"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"159"</v>
+              <v n="TextDefault">"Valve Control Enable:"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
