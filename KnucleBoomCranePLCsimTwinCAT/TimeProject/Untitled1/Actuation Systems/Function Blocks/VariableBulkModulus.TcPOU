@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="VariableBulkModulus" Id="{faec5bd3-1292-42e5-aa97-1b5f3f97b5dc}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK VariableBulkModulus
+VAR_INPUT
+	OilBulkModulus: LREAL;
+	AdiatricAirConstant: LREAL;
+	AtmosphericPressure: LREAL;
+	CapacitancePressure: LREAL;
+	VolumetricAirContentOfOil: LREAL;
+END_VAR
+VAR_OUTPUT
+	VariableBulkModulus: LREAL;
+END_VAR
+VAR
+	rtb_Add: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[rtb_Add := AtmosphericPressure + CapacitancePressure;
+
+VariableBulkModulus := 1.0 / ((1.0 / OilBulkModulus) - (1.0 / ((((VolumetricAirContentOfOil - 1.0) / (EXPT(AtmosphericPressure / rtb_Add, 1.0 / AdiatricAirConstant) * VolumetricAirContentOfOil)) - 1.0) * (rtb_Add * AdiatricAirConstant))));
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="VariableBulkModulus">
+      <LineId Id="6" Count="0" />
+      <LineId Id="26" Count="1" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

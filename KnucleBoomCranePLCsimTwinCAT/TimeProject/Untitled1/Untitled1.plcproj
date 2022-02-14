@@ -50,6 +50,12 @@
     <Compile Include="Actuation Systems\Function Blocks\ValveControlledCylinder.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\ValveDynamics.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\VariableBulkModulus.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Actuation Systems\GVL\G_ActuationSystems.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
