@@ -38,6 +38,9 @@
     <Compile Include="Actuation Systems\Function Blocks\OrificeEquation.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Actuation Systems\Function Blocks\PistonForce.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Actuation Systems\Function Blocks\PressureBuildUp.TcPOU">
       <SubType>Code</SubType>
     </Compile>

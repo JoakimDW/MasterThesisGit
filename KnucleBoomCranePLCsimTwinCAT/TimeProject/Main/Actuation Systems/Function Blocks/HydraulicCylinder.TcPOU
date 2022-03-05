@@ -3,8 +3,8 @@
   <POU Name="HydraulicCylinder" Id="{3bf06456-7c7d-48f2-a9cc-e4b64f4dae07}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK HydraulicCylinder
 VAR_INPUT
-	PressureBoreSide: LREAL;
-	PressureRodSide: LREAL;
+	PressureBoreSide : LREAL;
+	PressureRodSide : LREAL;
 	param : ST_pValveControlledCylinder;
 END_VAR
 VAR_OUTPUT
