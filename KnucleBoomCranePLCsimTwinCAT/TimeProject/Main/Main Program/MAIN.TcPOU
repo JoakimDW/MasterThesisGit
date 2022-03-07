@@ -3,11 +3,7 @@
   <POU Name="MAIN" Id="{d1c7ef4e-0337-49c7-9736-af80a39f1b25}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-
 	Timer : LREAL;
-	
-
-	
 END_VAR
 
 ]]></Declaration>

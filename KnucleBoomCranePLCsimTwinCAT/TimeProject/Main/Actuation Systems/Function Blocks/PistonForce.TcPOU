@@ -4,78 +4,117 @@
     <Declaration><![CDATA[FUNCTION_BLOCK PistonForce
 VAR_INPUT
 	PistonVelocity : LREAL;
-	Piston_Position : LREAL;
+	PistonPosition : LREAL;
 	PressureBoreSide : LREAL;
 	PressureRodSide : LREAL;
 	Aa : LREAL;
 	Ab : LREAL;
-	param : HydraulicCylinder;
 END_VAR
 VAR_OUTPUT
 	F_Piston : LREAL;
+	F_Hydraulic : LREAL;
 END_VAR
 VAR
+	par : ST_pValveControlledCylinder;
 	y_tmp : LREAL;
+	SpringContactCoefficient : LREAL;
+	DamperContactCoefficient : LREAL;
+	F_Upper_Stroke_Limit : LREAL;
+	F_Lower_Stroke_Limit : LREAL;
+	F_Stribeck_Friction : LREAL;
+	AbsPosition: LREAL;
 END_VAR
 
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//Hydraulic Force [N]
-F_Hydraulic := param.PressureBoreSide * param.Aa - param.PressureRodSide * param.Ab;
-
-
-//Upper Stroke Limit Contact Force [N]
+      <ST><![CDATA[// Hydraulic Force [N] //
+F_Hydraulic := PressureBoreSide * Aa - PressureRodSide * Ab;
 
 
 
+// Upper Stroke Limit Contact Force [N] //
+IF PistonPosition >= par.xMax THEN 
+	SpringContactCoefficient := par.cyl_k_end;
+ELSIF PistonPosition < par.xMax THEN 
+	SpringContactCoefficient := 0;
+END_IF;	
 
-//Lower Stroke Limit Contact Force [N]
+IF PistonPosition >= par.xMax THEN 
+	DamperContactCoefficient := par.cyl_c_end;
+ELSIF PistonPosition < par.xMax THEN 
+	DamperContactCoefficient := 0;
+END_IF;	
+
+F_Upper_Stroke_Limit := ((PistonPosition - par.xMax) * SpringContactCoefficient) + (DamperContactCoefficient * PistonVelocity);
 
 
 
+// Lower Stroke Limit Contact Force [N] //
+IF PistonPosition > 0 THEN 
+	SpringContactCoefficient := 0;
+ELSIF PistonPosition <= 0 THEN 
+	SpringContactCoefficient := par.cyl_k_end;
+END_IF;	
 
-//Stribeck Friction Force [N]
-y_tmp := EXP((PistonVelocity * 250.0) * 2.0);
+IF PistonPosition > 0 THEN 
+	DamperContactCoefficient := 0;
+ELSIF PistonPosition <= 0 THEN 
+	DamperContactCoefficient := par.cyl_c_end;
+END_IF;	
+
+AbsPosition := ABS(PistonPosition);
+F_Lower_Stroke_Limit := (SpringContactCoefficient * AbsPosition) + (DamperContactCoefficient * (-1) * PistonVelocity);
+
+
+
+// Stribeck Friction Force [N] //
+y_tmp := EXP((PistonVelocity * par.FrictionForceApproximationConstant) * 2.0);
 y_tmp := (y_tmp - 1.0) / (y_tmp + 1.0);
-Stribeck_F := (((EXP(( -(PistonVelocity * y_tmp)) / 0.02) * 500.0) + 75.0) * y_tmp) + (PistonVelocity * 1500.0);
+F_Stribeck_Friction := (((EXP(( -(PistonVelocity * y_tmp)) / par.StaticFrictionTimeConstant) * ABS(par.StaticFrictionForce)) + par.ColoumbFriction) * y_tmp) + (PistonVelocity * par.ViscousFrictionCoefficient);
 
 
 
-
-//Piston Force Total [N]
+/// Piston Force Total [N] ///
 F_Piston := F_Hydraulic - F_Upper_Stroke_Limit + F_Lower_Stroke_Limit - F_Stribeck_Friction;
 
 
 
-
-//IF higher/lower than value formula for PLC:
-//IF PistonPosition >= param.xMax THEN 
-//	PistonPosition := param.xMax;
-//ELSIF PistonPosition <= 0 THEN 
-//	PistonPosition := 0;
-//END_IF;	]]></ST>
+]]></ST>
     </Implementation>
     <LineIds Name="PistonForce">
       <LineId Id="31" Count="0" />
-      <LineId Id="36" Count="1" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="123" Count="0" />
       <LineId Id="40" Count="0" />
       <LineId Id="38" Count="0" />
-      <LineId Id="41" Count="3" />
+      <LineId Id="102" Count="3" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="107" Count="4" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="44" Count="0" />
       <LineId Id="39" Count="0" />
+      <LineId Id="112" Count="9" />
       <LineId Id="46" Count="0" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="136" Count="0" />
       <LineId Id="45" Count="0" />
-      <LineId Id="33" Count="0" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="148" Count="0" />
       <LineId Id="32" Count="0" />
       <LineId Id="20" Count="2" />
       <LineId Id="30" Count="0" />
-      <LineId Id="73" Count="2" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="73" Count="0" />
       <LineId Id="49" Count="0" />
       <LineId Id="48" Count="0" />
       <LineId Id="51" Count="0" />
       <LineId Id="58" Count="0" />
       <LineId Id="67" Count="1" />
-      <LineId Id="64" Count="0" />
-      <LineId Id="59" Count="4" />
       <LineId Id="57" Count="0" />
     </LineIds>
   </POU>

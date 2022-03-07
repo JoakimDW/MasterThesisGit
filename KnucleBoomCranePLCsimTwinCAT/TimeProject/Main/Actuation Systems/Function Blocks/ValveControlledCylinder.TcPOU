@@ -10,16 +10,18 @@ END_VAR
 VAR_OUTPUT
 	PistonArea : LREAL;
 	AnnulusArea : LREAL;
+	PressurepA : LREAL;
+	PressurepB : LREAL;
 END_VAR
 VAR
 
 //Pressure pA
 fbPressureGradient_pA : PressureGradient;
-PressurepA : LREAL;
+//PressurepA : LREAL;
 
 //Pressure pB
 fbPressureGradient_pB : PressureGradient;
-PressurepB : LREAL;
+//PressurepB : LREAL;
 
 //OrificeEquation QA and QB
 fbOrificeEquationQ_P_A : OrificeEquation;
@@ -37,14 +39,20 @@ FlowQL : LREAL := 0.00001;
 //HydraulicCylinder
 fbHydraulicCylinder : HydraulicCylinder;
 
+//Control
 xPos : LREAL;
 ValveOpeningControl : LREAL := 0.0;
 uDcv : LREAL := 0.0;
 uDcvEnable : BOOL := TRUE; 
+pVelocity : LREAL;
 
+//BulkModulus
 fbBulkModulus : BulkModulus;
 fbVariableBulkModulus : VariableBulkModulus;
 
+//Forces
+fbPistonForce : PistonForce;
+Cylinder_1_PistonForce : LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -55,7 +63,7 @@ ELSE
 	ValveOpeningControl := 0;
 END_IF
 
-ValveOpeningControl := XboxControl.joyLeft;
+//ValveOpeningControl := XboxControl.joyLeft;      Commented out xbox control as for now
 
 //VariableBulkModulus
 fbVariableBulkModulus(
@@ -139,9 +147,20 @@ fbHydraulicCylinder(
 	Aa => PistonArea,
 	Ab => AnnulusArea,
 	PistonPosition => xPos,
+	PistonVelocity => pVelocity,
 	param := Param.pMainJibCylinder
 	);
-	]]></ST>
+	
+//PistonForce Cylinder 1
+fbPistonForce(
+	PressureBoreSide := PressurepA,
+	PressureRodSide := PressurepB,
+	Aa := PistonArea,
+	Ab := AnnulusArea,
+	PistonPosition := xPos,
+	PistonVelocity := pVelocity,
+	F_Piston => Cylinder_1_PistonForce
+	);]]></ST>
     </Implementation>
     <LineIds Name="ValveControlledCylinder">
       <LineId Id="253" Count="1" />
@@ -194,9 +213,14 @@ fbHydraulicCylinder(
       <LineId Id="259" Count="0" />
       <LineId Id="261" Count="0" />
       <LineId Id="71" Count="0" />
+      <LineId Id="469" Count="0" />
       <LineId Id="121" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="120" Count="0" />
+      <LineId Id="460" Count="1" />
+      <LineId Id="463" Count="5" />
+      <LineId Id="471" Count="0" />
+      <LineId Id="462" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

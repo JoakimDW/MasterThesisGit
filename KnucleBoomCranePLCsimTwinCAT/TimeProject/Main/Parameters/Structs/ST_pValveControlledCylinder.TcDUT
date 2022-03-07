@@ -31,8 +31,9 @@ STRUCT
 	FrictionForceApproximationConstant : LREAL := 250;  //[-]
 	ColoumbFriction : LREAL := 75;						//[N] Force
 	StaticFrictionForce : LREAL := 500;					//[N]
-	StaticFrictionTimeConstant : LREAL := 1/50;			//[s/m]
-	
+	StaticFrictionTimeConstant : LREAL := 0.02;			//[s/m]
+	cyl_k_end : LREAL := 6E9;                   					//[N/m] spring constant for spring at the stroke limits of a cylinder
+	cyl_c_end : LREAL := 9E8;										//[N*s/m] Viscous constant for damper at the stroke limits of a cylinder
 END_STRUCT
 END_TYPE
 ]]></Declaration>
