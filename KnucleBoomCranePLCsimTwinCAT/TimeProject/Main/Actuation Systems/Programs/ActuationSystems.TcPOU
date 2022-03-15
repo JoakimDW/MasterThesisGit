@@ -3,27 +3,34 @@
   <POU Name="ActuationSystems" Id="{3cabdd9c-217f-443b-9923-404fabc5dbf5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM ActuationSystems
 VAR
-fbMainJibCylinder : ValveControlledCylinder;
-//fbKnuckleJibCylinder : ValveControlledCylinder;
+fbMainJibCylinderHyd : ValveControlledCylinder;
+//HydraulicCylinder
+fbMainJibCylinderMech : CylinderMech;
 fbHPU : HPU;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-fbHPU(
+      <ST><![CDATA[fbHPU(
 );
 
-fbMainJibCylinder(
-ReturnPressure := G_ActuationSystems.ReturnPressure,
-SupplyPressure := G_ActuationSystems.SupplyPressure,
-par := Param.pMainJibCylinder
+//Hyd Model for MainJibCylinder
+fbMainJibCylinderHyd(
+	uDcvEnable := Inputs.uDcvEnableMainJib,
+	uDcv := Inputs.uDcvMainJib,	
+	ReturnPressure := G_ActuationSystems.ReturnPressure,
+	SupplyPressure := G_ActuationSystems.SupplyPressure,
+	par := Param.pMainJibCylinder,
+	xPiston := fbMainJibCylinderMech.PistonPosition,
+	vPiston := fbMainJibCylinderMech.PistonVelocity,
 );
 
-(* fbKnuckleJibCylinder(
-ReturnPressure := G_ActuationSystems.ReturnPressure,
-SupplyPressure := G_ActuationSystems.SupplyPressure,
-par := Param.pMainKnuckleCylinder
-); *)
+//Temp Mechanical Model for MainJibCylinder
+fbMainJibCylinderMech(
+	F_Hydraulic := fbMainJibCylinderHyd.F_Hydraulic,
+	param := Param.pMainJibCylinder,
+	F_Piston => Work.FpistonMainJib
+);	
+
 
 
 
@@ -31,16 +38,20 @@ par := Param.pMainKnuckleCylinder
 ]]></ST>
     </Implementation>
     <LineIds Name="ActuationSystems">
-      <LineId Id="39" Count="0" />
       <LineId Id="31" Count="0" />
       <LineId Id="30" Count="0" />
+      <LineId Id="67" Count="0" />
       <LineId Id="34" Count="0" />
       <LineId Id="5" Count="0" />
+      <LineId Id="68" Count="1" />
       <LineId Id="18" Count="1" />
       <LineId Id="36" Count="0" />
+      <LineId Id="61" Count="1" />
       <LineId Id="17" Count="0" />
-      <LineId Id="25" Count="3" />
-      <LineId Id="37" Count="0" />
+      <LineId Id="48" Count="3" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="47" Count="0" />
       <LineId Id="20" Count="0" />
       <LineId Id="29" Count="0" />
       <LineId Id="12" Count="0" />

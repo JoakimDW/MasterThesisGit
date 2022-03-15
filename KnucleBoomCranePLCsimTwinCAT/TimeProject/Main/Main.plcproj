@@ -32,13 +32,10 @@
     <Compile Include="Actuation Systems\Function Blocks\HPU.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Actuation Systems\Function Blocks\HydraulicCylinder.TcPOU">
+    <Compile Include="Actuation Systems\Function Blocks\CylinderMech.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Actuation Systems\Function Blocks\OrificeEquation.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Actuation Systems\Function Blocks\PistonForce.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Actuation Systems\Function Blocks\PressureBuildUp.TcPOU">
@@ -60,6 +57,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Actuation Systems\GVL\G_ActuationSystems.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="Actuation Systems\GVL\Inputs.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="Actuation Systems\GVL\Work.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
