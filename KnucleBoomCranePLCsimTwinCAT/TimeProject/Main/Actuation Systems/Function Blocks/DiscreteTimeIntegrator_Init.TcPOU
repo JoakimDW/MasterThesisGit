@@ -49,10 +49,9 @@ CASE ssMethodType OF
             c_DiscreteTimeIntegrator_DS := minOut;
         END_IF;
 
-        (* Outport: '<Root>/Out' incorporates:
-         *  DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+       
         Out := c_DiscreteTimeIntegrator_DS;
-        (* Update for DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+        
         c_DiscreteTimeIntegrator_IC := 0;
         c_DiscreteTimeIntegrator_DS := (tCycle * In) + c_DiscreteTimeIntegrator_DS;
 
@@ -62,15 +61,16 @@ CASE ssMethodType OF
             c_DiscreteTimeIntegrator_DS := minOut;
         END_IF;
 
-        (* End of Update for DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
-        (* End of Outputs for SubSystem: '<Root>/DiscreteTimeIntegrator_Init' *)
 END_CASE;
 
 
 ]]></ST>
     </Implementation>
     <LineIds Name="DiscreteTimeIntegrator_Init">
-      <LineId Id="3" Count="47" />
+      <LineId Id="3" Count="30" />
+      <LineId Id="35" Count="9" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="48" Count="2" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
