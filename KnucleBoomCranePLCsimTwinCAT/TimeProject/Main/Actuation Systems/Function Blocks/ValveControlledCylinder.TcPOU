@@ -17,6 +17,7 @@ END_VAR
 VAR
 	PressurepA : LREAL;
 	PressurepB : LREAL;
+	
 
 //Pressure pA
 fbPressureGradient_pA : PressureGradient;
@@ -53,15 +54,17 @@ AnnulusArea : LREAL;
 //ValveDynamics
 fbValveDynamics : ValveDynamics;
 uDcvDynamic : LREAL;
+
+
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-IF uDcvEnable THEN
-	ValveOpeningControl := uDcv;
-ELSE 
-	ValveOpeningControl := 0;
-END_IF
+//IF uDcvEnable THEN
+//	ValveOpeningControl := uDcv;
+//ELSE 
+//	ValveOpeningControl := 0;
+//END_IF
 
 	
 PistonArea := EXPT(par.DBore,2) * (par.pi/4.0);
@@ -70,11 +73,17 @@ AnnulusArea := (EXPT(par.DBore,2) - EXPT(par.DRod,2)) * (par.pi/4.0);
 //ValveOpeningControl := XboxControl.joyLeft;      Commented out xbox control as for now
 
 //ValveDynamics
-fbValveDynamics(
-	udcv_IN := ValveOpeningControl,
-	DynamicValve => uDcvDynamic
-	);
-
+IF uDcvEnable THEN
+	fbValveDynamics(
+		udcv_IN := uDcv,
+		DynamicValve => ValveOpeningControl
+		);
+ELSE
+	fbValveDynamics(
+		udcv_IN := 0,
+		DynamicValve => ValveOpeningControl
+		);	
+END_IF
 
 //VariableBulkModulus
 fbVariableBulkModulus(
@@ -173,11 +182,14 @@ F_Hydraulic := PressurepA * PistonArea - PressurepB * AnnulusArea;
       <LineId Id="534" Count="0" />
       <LineId Id="406" Count="1" />
       <LineId Id="604" Count="1" />
+      <LineId Id="671" Count="0" />
       <LineId Id="610" Count="0" />
       <LineId Id="612" Count="0" />
       <LineId Id="614" Count="0" />
       <LineId Id="611" Count="0" />
-      <LineId Id="609" Count="0" />
+      <LineId Id="668" Count="0" />
+      <LineId Id="674" Count="3" />
+      <LineId Id="673" Count="0" />
       <LineId Id="353" Count="0" />
       <LineId Id="249" Count="0" />
       <LineId Id="354" Count="0" />

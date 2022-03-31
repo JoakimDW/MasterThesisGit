@@ -5,8 +5,8 @@
 VAR_GLOBAL
 	uDcvEnableMainJib : BOOL := TRUE;		//Enable/Disable manual control of MainJibCylinder valve
 	uDcvMainJib : LREAL;
-	uDcvEnableBoom : BOOL := TRUE;			//Enable/Disable manual control of BoomCylinder valve
-	uDcvBoom : LREAL;
+	uDcvEnableKnuckleJib : BOOL := TRUE;			//Enable/Disable manual control of BoomCylinder valve
+	uDcvKnuckleJib : LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

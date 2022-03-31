@@ -4,7 +4,7 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	FpistonMainJib : LREAL;
-	FpistonBoom : LREAL;
+	FpistonKnuckleJib : LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
