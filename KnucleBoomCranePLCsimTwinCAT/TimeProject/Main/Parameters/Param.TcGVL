@@ -3,8 +3,9 @@
   <GVL Name="Param" Id="{8cc71902-54f3-4068-b684-2ff92871ee93}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	pMainJibCylinder : ST_pValveControlledCylinder;
-	//pMainKnuckleCylinder : ST_pValveControlledCylinder;
+	pMainJibCylinder : ST_pValveControlledCylinder;				//Parameters for MainJibCylinder uses values from ST_pValveControlledCylinder
+	pBoomCylinder : ST_pValveControlledCylinder; 				//Parameters for BoomCylinder uses values from ST_pValveControlledCylinderv
+	//pKnuckleCylinder : ST_pValveControlledCylinder;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

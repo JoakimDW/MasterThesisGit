@@ -3,8 +3,10 @@
   <GVL Name="Inputs" Id="{379b0098-5f22-4bf9-b1bd-8bcf308b02e1}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	uDcvEnableMainJib : BOOL := TRUE;
+	uDcvEnableMainJib : BOOL := TRUE;		//Enable/Disable manual control of MainJibCylinder valve
 	uDcvMainJib : LREAL;
+	uDcvEnableBoom : BOOL := TRUE;			//Enable/Disable manual control of BoomCylinder valve
+	uDcvBoom : LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

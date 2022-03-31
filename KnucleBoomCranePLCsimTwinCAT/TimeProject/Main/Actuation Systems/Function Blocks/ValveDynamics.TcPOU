@@ -3,17 +3,25 @@
   <POU Name="ValveDynamics" Id="{bdd402cd-9955-422d-9429-c814b00ee090}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK ValveDynamics
 VAR_INPUT
+	udcv_IN : LREAL;
 END_VAR
 VAR_OUTPUT
+	DynamicValve : LREAL;
 END_VAR
 VAR
+	Timer : LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[Timer := Timer + 0.001;
+
+//Valve opening signal is sent through this
+DynamicValve := ((100*SQRT(3))/SQRT(17))*EXP(-21*Timer)*SIN(3*SQRT(51)*Timer);]]></ST>
     </Implementation>
     <LineIds Name="ValveDynamics">
-      <LineId Id="9" Count="0" />
+      <LineId Id="34" Count="1" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="18" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
