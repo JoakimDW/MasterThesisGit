@@ -5,6 +5,7 @@
 VAR_GLOBAL PERSISTENT
 	pMainJibCylinder : ST_pValveControlledCylinder;				//Parameters for MainJibCylinder uses values from ST_pValveControlledCylinder
 	pKnuckleJibCylinder : ST_pValveControlledCylinder; 				//Parameters for BoomCylinder uses values from ST_pValveControlledCylinderv
+	pKingRotationCylinder : ST_pValveControlledCylinder;
 	//pKnuckleCylinder : ST_pValveControlledCylinder;
 END_VAR]]></Declaration>
   </GVL>

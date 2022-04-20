@@ -5,9 +5,11 @@
 VAR
 fbMainJibCylinderHyd : ValveControlledCylinder;
 fbKnuckleJibCylinderHyd : ValveControlledCylinder;
+fbKingRotationCylinderHyd : ValveControlledCylinder;
 //HydraulicCylinder
 fbMainJibCylinderMech : CylinderMech;
 fbKnuckleJibCylinderMech : CylinderMech;
+fbkingRotationCylinderMech : CylinderMech;
 
 fbHPU : HPU;
 END_VAR

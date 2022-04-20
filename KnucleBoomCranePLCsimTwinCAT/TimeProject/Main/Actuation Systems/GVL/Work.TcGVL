@@ -5,6 +5,7 @@
 VAR_GLOBAL
 	FpistonMainJib : LREAL;
 	FpistonKnuckleJib : LREAL;
+	FpistonKingRotation : LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

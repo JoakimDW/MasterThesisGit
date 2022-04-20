@@ -7,6 +7,8 @@ VAR_GLOBAL
 	uDcvMainJib : LREAL;
 	uDcvEnableKnuckleJib : BOOL := TRUE;			//Enable/Disable manual control of BoomCylinder valve
 	uDcvKnuckleJib : LREAL;
+	uDcvEnableKingRotation : BOOL := TRUE;		//Enable/Disable manual control of KingRotationCylinder valve
+	uDcvKingRotation : LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
