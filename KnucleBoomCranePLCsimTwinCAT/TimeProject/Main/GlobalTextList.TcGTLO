@@ -6,6 +6,11 @@
         <o xml:space="preserve" t="GlobalTextListObject">
           <l n="TextList" t="ArrayList" cet="TextListRow">
             <o>
+              <v n="TextID">"353"</v>
+              <v n="TextDefault">"		"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"398"</v>
               <v n="TextDefault">"%0.1f"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -66,13 +71,68 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"160"</v>
+              <v n="TextDefault">"King Cylinder Rotation"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"808"</v>
+              <v n="TextDefault">"King Cylinder Rotation
+&lt; -1,1 &gt; "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"413"</v>
+              <v n="TextDefault">"KingRotation Cylinder Position
+&lt; -1,1 &gt; "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"270"</v>
               <v n="TextDefault">"KingRotation Valve Controls"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"72"</v>
+              <v n="TextDefault">"KnuckleBoom Cylinder Position"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"993"</v>
+              <v n="TextDefault">"KnuckleBoom Cylinder Position
+&lt; -1,1 &gt; "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"875"</v>
               <v n="TextDefault">"KnuckleBoom Valve Controls"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"610"</v>
+              <v n="TextDefault">"MainBoom Cylinder Position"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"758"</v>
+              <v n="TextDefault">"MainBoom Cylinder Position
+&lt; -1,1 &gt; "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"351"</v>
+              <v n="TextDefault">"MainBoom Cylinder Position
+d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"844"</v>
+              <v n="TextDefault">"MainBoom Cylinder Position "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"334"</v>
+              <v n="TextDefault">"MainBoom Cylinder Position                                             Min 2"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
