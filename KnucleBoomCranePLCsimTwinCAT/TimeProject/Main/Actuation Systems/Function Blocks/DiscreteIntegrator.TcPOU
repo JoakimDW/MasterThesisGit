@@ -5,7 +5,7 @@
 VAR_INPUT
 	ssMethodType: SINT;
 	In1: LREAL;
-	StepTime : LREAL := 0.001;
+	StepTime : LREAL := 0.001*10;
 END_VAR
 VAR_OUTPUT
 	Out1: LREAL;

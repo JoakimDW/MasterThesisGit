@@ -25,8 +25,9 @@ fbMainJibCylinderHyd(
 	ReturnPressure := G_ActuationSystems.ReturnPressure,
 	SupplyPressure := G_ActuationSystems.SupplyPressure,
 	par := Param.pMainJibCylinder,
-	xPiston := fbMainJibCylinderMech.PistonPosition,
-	vPiston := fbMainJibCylinderMech.PistonVelocity,
+	xPiston := FromUnreal.MainJibPistPosition,
+	vPiston := FromUnreal.MainJibPistVelocity,
+	F_Hydraulic => ToUnreal.MainJibPistForce
 );
 //Hyd Model for KnuckleJibCylinder
 fbKnuckleJibCylinderHyd(
@@ -36,7 +37,7 @@ fbKnuckleJibCylinderHyd(
 	SupplyPressure := G_ActuationSystems.SupplyPressure,
 	par := Param.pKnuckleJibCylinder,
 	xPiston := fbKnuckleJibCylinderMech.PistonPosition,
-	vPiston := fbKnuckleJibCylinderMech.PistonVelocity,
+	vPiston := fbKnuckleJibCylinderMech.PistonVelocity*1000,
 );
 
 //Temp Mechanical Model for MainJibCylinder
@@ -67,6 +68,7 @@ fbKnuckleJibCylinderMech(
       <LineId Id="18" Count="1" />
       <LineId Id="36" Count="0" />
       <LineId Id="61" Count="1" />
+      <LineId Id="107" Count="0" />
       <LineId Id="17" Count="0" />
       <LineId Id="78" Count="9" />
       <LineId Id="48" Count="3" />

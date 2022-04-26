@@ -18,6 +18,9 @@ VAR
 	PressurepA : LREAL;
 	PressurepB : LREAL;
 	
+	y_tmp1 : LREAL;
+	y_tmp2 : LREAL;
+	F_Stribeck_Friction : LREAL;
 
 //Pressure pA
 fbPressureGradient_pA : PressureGradient;
@@ -160,7 +163,11 @@ ELSE
 END_IF
 
 // Hydraulic Force [N] //
-F_Hydraulic := PressurepA * PistonArea - PressurepB * AnnulusArea;
+//// Stribeck Friction Force [N] // Dette går til Urealistisk visualisator
+//y_tmp1 := EXP((ABS(vPiston) * par.FrictionForceApproximationConstant) * 2.0);
+//y_tmp2 := (y_tmp1 - 1.0) / (y_tmp1 + 1.0);
+//F_Stribeck_Friction := (((EXP(( -(vPiston * y_tmp2)) / par.StaticFrictionTimeConstant) * ABS(par.StaticFrictionForce)) + par.ColoumbFriction) * y_tmp2) + (vPiston * par.ViscousFrictionCoefficient);
+F_Hydraulic := PressurepA * PistonArea - PressurepB * AnnulusArea;  //F_Stribeck_Friction;
 	
 //PistonForce Cylinder
 //fbPistonForce(
@@ -231,6 +238,8 @@ F_Hydraulic := PressurepA * PistonArea - PressurepB * AnnulusArea;
       <LineId Id="208" Count="0" />
       <LineId Id="206" Count="1" />
       <LineId Id="553" Count="1" />
+      <LineId Id="735" Count="2" />
+      <LineId Id="734" Count="0" />
       <LineId Id="552" Count="0" />
       <LineId Id="120" Count="0" />
       <LineId Id="460" Count="1" />
