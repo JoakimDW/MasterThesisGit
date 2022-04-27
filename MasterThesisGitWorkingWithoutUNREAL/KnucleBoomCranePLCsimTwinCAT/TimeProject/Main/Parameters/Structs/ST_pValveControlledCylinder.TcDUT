@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <DUT Name="ST_pValveControlledCylinder" Id="{78f846a6-6b02-4cbc-8d8a-455fc5dcc97d}">
+    <Declaration><![CDATA[TYPE ST_pValveControlledCylinder :
+STRUCT
+	tCycle : LREAL := 1E-4;
+	gravity : LREAL := 9.81;	
+	Kv : LREAL := 10 / SQRT(7); 						//[L/min / sqrt(bar)]
+	DBore : LREAL := 120E-3;							//[m]
+	DRod : LREAL := 80E-3;								//[m]
+	xMax : LREAL := 1;									//[m]
+	x0 : LREAL := 0.5;									//[m]
+	pi : LREAL := 3.14159265359;						//Value of pi
+    VA0 : LREAL := 0.01;								//[m^3]
+	VB0 : LREAL := 0.01;								//[m^3]
+	pMax : LREAL := 200E5; 								//[Pa]
+	EffectiveMass : LREAL := 5000;						//[kg]
+	ExternalForce : LREAL := EffectiveMass*gravity;		//[N]
+	FrictionConstant : LREAL := 10000;					//[N/(m/s)]
+	pA0 : LREAL := ExternalForce/0.0113;
+	pB0 : LREAL := 1E5;
+	pAmax : LREAL :=200E5;
+	pBmax : LREAL :=200E5;
+	vMax : LREAL := 1; 
+	v0 : LREAL := 0; 
+	OilBulkModulus : LREAL := 12000E5;					//[Pa]
+	AdiatricAirConstant : LREAL := 1.4;					//[-]
+	AtmosphericPressure : LREAL := 1.01325E5; 			//[Pa]
+	VolumetricAirConstant : LREAL := 0.007;				//[%]
+	ViscousFrictionCoefficient : LREAL := 1500;			//[kg/s]
+	FrictionForceApproximationConstant : LREAL := 250;  //[-]
+	ColoumbFriction : LREAL := 75;						//[N] Force
+	StaticFrictionForce : LREAL := 500;					//[N]
+	StaticFrictionTimeConstant : LREAL := 0.02;			//[s/m]
+	cyl_k_end : LREAL := 6E9;                   					//[N/m] spring constant for spring at the stroke limits of a cylinder
+	cyl_c_end : LREAL := 9E8;										//[N*s/m] Viscous constant for damper at the stroke limits of a cylinder
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

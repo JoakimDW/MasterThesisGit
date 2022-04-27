@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="MAIN" Id="{d1c7ef4e-0337-49c7-9736-af80a39f1b25}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	Timer : LREAL;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Timer
+Timer := Timer + 0.001;
+
+ActuationSystems();
+P_Joy();]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="77" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="413" Count="0" />
+      <LineId Id="368" Count="0" />
+      <LineId Id="423" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

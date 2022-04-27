@@ -1,0 +1,31 @@
+function RTW_SidParentMap() {
+    this.sidParentMap = new Array();
+    this.sidParentMap["MasterSubsystems:197"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:198"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:199"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:200"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:201"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:156"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:194"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:162"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:163"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:185"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:178"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:179"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:180"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:183"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:184"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:152"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:154"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:164"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:166"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:188"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:189"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:204"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:155"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:168"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:169"] = "MasterSubsystems:196";
+    this.sidParentMap["MasterSubsystems:202"] = "MasterSubsystems:196";
+    this.getParentSid = function(sid) { return this.sidParentMap[sid];}
+}
+    RTW_SidParentMap.instance = new RTW_SidParentMap();

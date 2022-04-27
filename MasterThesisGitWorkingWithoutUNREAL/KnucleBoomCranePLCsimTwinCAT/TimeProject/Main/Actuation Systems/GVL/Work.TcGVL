@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <GVL Name="Work" Id="{5ed653ee-4ae3-47db-9070-5b8ede254b65}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	FpistonMainJib : LREAL;
+	FpistonKnuckleJib : LREAL;
+	FpistonKingRotation : LREAL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
