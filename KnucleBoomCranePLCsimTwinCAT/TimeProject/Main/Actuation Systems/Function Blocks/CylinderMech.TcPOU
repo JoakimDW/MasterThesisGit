@@ -15,9 +15,9 @@ VAR_OUTPUT
 	F_Piston : LREAL;
 END_VAR
 VAR
-	ssMethodType : SINT := 1; 
-	fbPistonVelocity : DiscreteTimeIntegrator_Init;
-	fbPistonPosition : DiscreteTimeIntegrator_Init;
+	fbPistonVelocity : TimeIntegrator;
+	fbPistonPosition : TimeIntegrator;
+	fDeltaTime : LREAL := 1E-4;
 	y_tmp : LREAL;
 	SpringContactCoefficient : LREAL;
 	DamperContactCoefficient : LREAL;
@@ -78,24 +78,43 @@ PistonAcceleration := (F_Piston - param.ExternalForce) / param.EffectiveMass;
 (* End of Outputs for SubSystem: '<Root>/HydraulicCylinder' *)
 
 fbPistonVelocity(
-	ssMethodType := ssMethodType,
-	tCycle := param.tCycle,
-	In := PistonAcceleration,
-	Init := param.v0,
-	minOut := -param.vMax,
-	maxOut := param.vMax,
-	Out => PistonVelocity
+	fStepTime := fDeltaTime,
+	fIn := PistonAcceleration,
+	fInit := param.v0,
+	fMinVal := -param.vMax,
+	fMaxVal := param.vMax,
+	fOut => PistonVelocity
 	);
 	
 fbPistonPosition(
-	ssMethodType := ssMethodType,
-	tCycle := param.tCycle,
-	In := PistonVelocity,
-	Init := param.x0,
-	minOut := 0,
-	maxOut := param.xMax,
-	Out => PistonPosition
+	fStepTime := param.tCycle,
+	fIn := PistonVelocity,
+	fInit := param.x0,
+	fMinVal := 0,
+	fMaxVal := param.xMax,
+	fOut => PistonPosition
 	);
+
+	//The 2 below uses the old DiscreteTimeIntegrator_Init FB
+//fbPistonVelocity(
+//	ssMethodType := ssMethodType,
+//	tCycle := param.tCycle,
+//	In := PistonAcceleration,
+//	Init := param.v0,
+//	minOut := -param.vMax,
+//	maxOut := param.vMax,
+//	Out => PistonVelocity
+//	);
+	
+//fbPistonPosition(
+//	ssMethodType := ssMethodType,
+//	tCycle := param.tCycle,
+//	In := PistonVelocity,
+//	Init := param.x0,
+//	minOut := 0,
+//	maxOut := param.xMax,
+//	Out => PistonPosition
+//	);
 
 //IF PistonPosition >= param.xMax THEN 
 //	PistonPosition := param.xMax;
@@ -110,13 +129,15 @@ fbPistonPosition(
       <LineId Id="262" Count="0" />
       <LineId Id="202" Count="0" />
       <LineId Id="90" Count="0" />
-      <LineId Id="12" Count="2" />
-      <LineId Id="37" Count="1" />
-      <LineId Id="154" Count="0" />
-      <LineId Id="39" Count="0" />
-      <LineId Id="124" Count="0" />
-      <LineId Id="126" Count="1" />
-      <LineId Id="40" Count="0" />
+      <LineId Id="12" Count="1" />
+      <LineId Id="290" Count="0" />
+      <LineId Id="292" Count="0" />
+      <LineId Id="294" Count="8" />
+      <LineId Id="304" Count="5" />
+      <LineId Id="291" Count="0" />
+      <LineId Id="310" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="335" Count="7" />
       <LineId Id="2" Count="0" />
       <LineId Id="41" Count="0" />
       <LineId Id="43" Count="1" />

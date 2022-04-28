@@ -18,7 +18,7 @@ END_VAR
       <ST><![CDATA[fbHPU(
 );
 
-//Hyd Model for MainJibCylinder
+//Hyd Model for MainJibCylinder (CONNECTED TO UNREAL)
 fbMainJibCylinderHyd(
 	uDcvEnable := Inputs.uDcvEnableMainJib,
 	uDcv := Inputs.uDcvMainJib,	
@@ -37,7 +37,7 @@ fbKnuckleJibCylinderHyd(
 	SupplyPressure := G_ActuationSystems.SupplyPressure,
 	par := Param.pKnuckleJibCylinder,
 	xPiston := fbKnuckleJibCylinderMech.PistonPosition,
-	vPiston := fbKnuckleJibCylinderMech.PistonVelocity*1000,
+	vPiston := fbKnuckleJibCylinderMech.PistonVelocity
 );
 
 //Temp Mechanical Model for MainJibCylinder

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\MasterCraneOnBoat.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{59AFE4F9-8E4C-48D9-8005-EBB56C4213F0}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\MasterCraneOnBoat.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\MasterCraneOnBoatEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{3746332D-6AC0-46E3-88E5-FFAE3DF5F541}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultLightmass.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{C3D6CD71-FECF-4FBF-AFC4-6B517DBA600B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\TwinCatAdsApi">
+      <UniqueIdentifier>{FB48B640-8878-4F49-A77D-2A3938B1CF4F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\TwinCatAdsApi\Source">
+      <UniqueIdentifier>{2118399E-EF2E-4E9C-AB13-26C4D5416CCC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\ThirdParty">
+      <UniqueIdentifier>{6FB3AF87-56D6-4617-AEBB-5C9C4843BF2F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary">
+      <UniqueIdentifier>{B02E207F-3D75-434F-9698-B4EBB13CFDBD}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\TwinCatAdsApiLibrary.Build.cs">
+      <Filter>Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary</Filter>
+    </None>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Bin">
+      <UniqueIdentifier>{C86023FD-B440-4230-8B80-2FCBC8A895D9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Bin\Win64">
+      <UniqueIdentifier>{72AA66E5-2234-4AE5-A0F1-FDC8DD6EF35F}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Bin\Win64\TcAdsDll.dll">
+      <Filter>Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Bin\Win64</Filter>
+    </None>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Include">
+      <UniqueIdentifier>{7DDC088C-8242-49E7-938D-0CE44848A000}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Include\TcAdsAPI.h">
+      <Filter>Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Include\TcAdsDef.h">
+      <Filter>Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Include</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Lib">
+      <UniqueIdentifier>{3D7285DB-9EF1-415E-BAAF-1E707D1E83D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Lib\Win64">
+      <UniqueIdentifier>{FA88CBA1-CE36-45BA-8A0E-C9DBF0D16796}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Lib\Win64\TcAdsDll.lib">
+      <Filter>Plugins\TwinCatAdsApi\Source\ThirdParty\TwinCatAdsApiLibrary\Lib\Win64</Filter>
+    </None>
+    <None Include="..\..\Plugins\TwinCatAdsApi\TwinCatAdsApi.uplugin">
+      <Filter>Plugins\TwinCatAdsApi</Filter>
+    </None>
+    <Filter Include="Plugins\TwinCatAdsApi\Config">
+      <UniqueIdentifier>{DCB583FE-8F84-4801-B3BD-65AACC6187C5}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\TwinCatAdsApi\Config\FilterPlugin.ini">
+      <Filter>Plugins\TwinCatAdsApi\Config</Filter>
+    </None>
+    <Filter Include="Plugins\TwinCatAdsApi\Resources">
+      <UniqueIdentifier>{CD246BF6-F532-4055-87DA-6D4D3E2355A8}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\TwinCatAdsApi\Resources\Icon128.png">
+      <Filter>Plugins\TwinCatAdsApi\Resources</Filter>
+    </None>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\TwinCatAdsApi">
+      <UniqueIdentifier>{F0046C51-3887-4943-88AD-0F8139EDADDB}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\TwinCatAdsApi.Build.cs">
+      <Filter>Plugins\TwinCatAdsApi\Source\TwinCatAdsApi</Filter>
+    </None>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Private">
+      <UniqueIdentifier>{98B40BF9-B842-42D3-9CB7-D12A3A6ADB78}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Private\TcAdsMaster.cpp">
+      <Filter>Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Private\TcAdsVariable.cpp">
+      <Filter>Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Private\TwinCatAdsApi.cpp">
+      <Filter>Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Private</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Public">
+      <UniqueIdentifier>{E56227A9-0CEF-4117-A564-3766B43D6385}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Public\TcAdsApiTypes.h">
+      <Filter>Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Public\TcAdsMaster.h">
+      <Filter>Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Public\TcAdsVariable.h">
+      <Filter>Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Public\TwinCatAdsApi.h">
+      <Filter>Plugins\TwinCatAdsApi\Source\TwinCatAdsApi\Public</Filter>
+    </ClInclude>
+    <Filter Include="Source\MasterCraneOnBoat">
+      <UniqueIdentifier>{F72DACC5-5011-4489-B13A-2505DD0342A2}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\MasterCraneOnBoat\MasterCraneOnBoat.Build.cs">
+      <Filter>Source\MasterCraneOnBoat</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\MasterCraneOnBoat\MasterCraneOnBoat.cpp">
+      <Filter>Source\MasterCraneOnBoat</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MasterCraneOnBoat\MasterCraneOnBoat.h">
+      <Filter>Source\MasterCraneOnBoat</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MasterCraneOnBoat\MyClass_Dummy.cpp">
+      <Filter>Source\MasterCraneOnBoat</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MasterCraneOnBoat\MyClass_Dummy.h">
+      <Filter>Source\MasterCraneOnBoat</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

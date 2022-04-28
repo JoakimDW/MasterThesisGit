@@ -11,10 +11,10 @@ VAR_OUTPUT
 	DynamicValve : LREAL;
 END_VAR
 VAR
-	fDeltaTime : LREAL := 0.001*10;
+	fDeltaTime : LREAL := 0.001;
 	fAcceleration : LREAL;
-	fbVelocity : FB_TimeIntegrator := (fInit := 0.0);
-	fbPosition : FB_TimeIntegrator := (fInit := 0.0);
+	fbVelocity : TimeIntegrator := (fInit := 0.0);
+	fbPosition : TimeIntegrator := (fInit := 0.0);
 	a : LREAL;
 	b : LREAL;
 END_VAR

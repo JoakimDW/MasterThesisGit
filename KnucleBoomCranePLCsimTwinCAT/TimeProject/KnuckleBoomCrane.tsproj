@@ -7,7 +7,7 @@
 				<IoIdleTask CycleTime="1000"/>
 			</Settings>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="10000" AmsPort="350" AdtTasks="true">
+				<Task Id="3" Priority="20" CycleTime="1000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
 			</Tasks>
@@ -25,7 +25,7 @@
 								<OTCID>#x02010030</OTCID>
 							</ManualConfig>
 							<Priority>20</Priority>
-							<CycleTime>1000000</CycleTime>
+							<CycleTime>100000</CycleTime>
 						</Context>
 					</Contexts>
 					<TaskPouOids>

@@ -20,16 +20,10 @@
     <Compile Include="Actuation Systems\Function Blocks\BulkModulus.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Actuation Systems\Function Blocks\DiscreteIntegrator.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Actuation Systems\Function Blocks\DiscreteTimeIntegrator_Init.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Actuation Systems\Function Blocks\ElectricMotor.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Actuation Systems\Function Blocks\FB_TimeIntegrator.TcPOU">
+    <Compile Include="Actuation Systems\Function Blocks\TimeIntegrator.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Actuation Systems\Function Blocks\HPU.TcPOU">
@@ -41,10 +35,7 @@
     <Compile Include="Actuation Systems\Function Blocks\OrificeEquation.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Actuation Systems\Function Blocks\PressureBuildUp.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Actuation Systems\Function Blocks\PressureGradient.TcPOU">
+    <Compile Include="Actuation Systems\Function Blocks\Pressure.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Actuation Systems\Function Blocks\Pump.TcPOU">
@@ -54,9 +45,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Actuation Systems\Function Blocks\ValveDynamics.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Actuation Systems\Function Blocks\VariableBulkModulus.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Actuation Systems\GVL\FromUnreal.TcGVL">

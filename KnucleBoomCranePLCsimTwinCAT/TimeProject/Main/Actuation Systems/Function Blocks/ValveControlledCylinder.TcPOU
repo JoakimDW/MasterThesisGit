@@ -21,14 +21,12 @@ VAR
 	y_tmp1 : LREAL;
 	y_tmp2 : LREAL;
 	F_Stribeck_Friction : LREAL;
-
+	
 //Pressure pA
-fbPressureGradient_pA : PressureGradient;
-//PressurepA : LREAL;
+fbPressureGradient_pA : Pressure;
 
 //Pressure pB
-fbPressureGradient_pB : PressureGradient;
-//PressurepB : LREAL;
+fbPressureGradient_pB : Pressure;
 
 //OrificeEquation QA and QB
 fbOrificeEquationQ_P_A : OrificeEquation;
@@ -49,8 +47,8 @@ pVelocity : LREAL;
 
 //BulkModulus
 fbBulkModulus : BulkModulus;
-fbVariableBulkModulus : VariableBulkModulus;
 
+//PistonAreas
 PistonArea : LREAL;
 AnnulusArea : LREAL;
 
@@ -89,7 +87,7 @@ ELSE
 END_IF
 
 //VariableBulkModulus
-fbVariableBulkModulus(
+fbBulkModulus(
 	OilBulkModulus := par.OilBulkModulus,
 	AdiatricAirConstant := par.AdiatricAirConstant,
 	AtmosphericPressure := par.AtmosphericPressure,
@@ -167,8 +165,11 @@ END_IF
 //y_tmp1 := EXP((ABS(vPiston) * par.FrictionForceApproximationConstant) * 2.0);
 //y_tmp2 := (y_tmp1 - 1.0) / (y_tmp1 + 1.0);
 //F_Stribeck_Friction := (((EXP(( -(vPiston * y_tmp2)) / par.StaticFrictionTimeConstant) * ABS(par.StaticFrictionForce)) + par.ColoumbFriction) * y_tmp2) + (vPiston * par.ViscousFrictionCoefficient);
+
+//Force sent to UNREAL ENGINE
 F_Hydraulic := PressurepA * PistonArea - PressurepB * AnnulusArea;  //F_Stribeck_Friction;
-	
+
+
 //PistonForce Cylinder
 //fbPistonForce(
 //	PressureBoreSide := PressurepA,
@@ -240,8 +241,11 @@ F_Hydraulic := PressurepA * PistonArea - PressurepB * AnnulusArea;  //F_Stribeck
       <LineId Id="553" Count="1" />
       <LineId Id="735" Count="2" />
       <LineId Id="734" Count="0" />
+      <LineId Id="857" Count="0" />
+      <LineId Id="856" Count="0" />
       <LineId Id="552" Count="0" />
       <LineId Id="120" Count="0" />
+      <LineId Id="923" Count="0" />
       <LineId Id="460" Count="1" />
       <LineId Id="463" Count="5" />
       <LineId Id="471" Count="0" />

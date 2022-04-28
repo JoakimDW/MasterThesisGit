@@ -1,0 +1,2 @@
+C:\Users\student\Documents\Unreal Projects\MasterCraneOnBoat\Intermediate\Build\Win64\UE4Editor\Development\MasterCraneOnBoat\Definitions.MasterCraneOnBoat.h
+C:\Users\student\Documents\Unreal Projects\MasterCraneOnBoat\Source\MasterCraneOnBoat\MasterCraneOnBoat.h

@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "MasterCraneOnBoat",
+			"Path": "C:\\Users\\student\\Documents\\Unreal Projects\\MasterCraneOnBoat\\Source\\MasterCraneOnBoat.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "MasterCraneOnBoatEditor",
+			"Path": "C:\\Users\\student\\Documents\\Unreal Projects\\MasterCraneOnBoat\\Source\\MasterCraneOnBoatEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
