@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="CylinderMech" Id="{3bf06456-7c7d-48f2-a9cc-e4b64f4dae07}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK CylinderMech
+VAR_INPUT
+	//PressureBoreSide : LREAL;
+	//PressureRodSide : LREAL;
+	param : ST_pValveControlledCylinder;
+	F_Hydraulic : LREAL;
+END_VAR
+VAR_OUTPUT
+	PistonAcceleration: LREAL;
+	PistonVelocity : LREAL;
+	PistonPosition : LREAL;
+	F_Piston : LREAL;
+END_VAR
+VAR
+	ssMethodType : SINT := 1; 
+	fbPistonVelocity : DiscreteTimeIntegrator_Init;
+	fbPistonPosition : DiscreteTimeIntegrator_Init;
+	y_tmp : LREAL;
+	SpringContactCoefficient : LREAL;
+	DamperContactCoefficient : LREAL;
+	F_Upper_Stroke_Limit : LREAL;
+	F_Lower_Stroke_Limit : LREAL;
+	F_Stribeck_Friction : LREAL;
+	AbsPosition: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Upper Stroke Limit Contact Force [N] //
+IF PistonPosition >= param.xMax THEN 
+	SpringContactCoefficient := param.cyl_k_end;
+ELSIF PistonPosition < param.xMax THEN 
+	SpringContactCoefficient := 0;
+END_IF;	
+
+IF PistonPosition >= param.xMax THEN 
+	DamperContactCoefficient := param.cyl_c_end;
+ELSIF PistonPosition < param.xMax THEN 
+	DamperContactCoefficient := 0;
+END_IF;	
+
+F_Upper_Stroke_Limit := ((PistonPosition - param.xMax) * SpringContactCoefficient) + (DamperContactCoefficient * PistonVelocity);
+
+
+
+//// Lower Stroke Limit Contact Force [N] //
+IF PistonPosition > 0 THEN 
+	SpringContactCoefficient := 0;
+ELSIF PistonPosition <= 0 THEN 
+	SpringContactCoefficient := param.cyl_k_end;
+END_IF;	
+
+IF PistonPosition > 0 THEN 
+	DamperContactCoefficient := 0;
+ELSIF PistonPosition <= 0 THEN 
+	DamperContactCoefficient := param.cyl_c_end;
+END_IF;	
+
+AbsPosition := ABS(PistonPosition);
+F_Lower_Stroke_Limit := (SpringContactCoefficient * AbsPosition) + (DamperContactCoefficient * (-1) * PistonVelocity);
+
+
+
+//// Stribeck Friction Force [N] //
+y_tmp := EXP((PistonVelocity * param.FrictionForceApproximationConstant) * 2.0);
+y_tmp := (y_tmp - 1.0) / (y_tmp + 1.0);
+F_Stribeck_Friction := (((EXP(( -(PistonVelocity * y_tmp)) / param.StaticFrictionTimeConstant) * ABS(param.StaticFrictionForce)) + param.ColoumbFriction) * y_tmp) + (PistonVelocity * param.ViscousFrictionCoefficient);
+
+
+/// Piston Force Total [N] ///
+F_Piston := F_Hydraulic - F_Upper_Stroke_Limit + F_Lower_Stroke_Limit - F_Stribeck_Friction;
+
+
+// Piston Acceleration [m/s^2]
+PistonAcceleration := (F_Piston - param.ExternalForce) / param.EffectiveMass;
+
+fbPistonVelocity(
+	ssMethodType := ssMethodType,
+	tCycle := param.tCycle,
+	In := PistonAcceleration,
+	Init := param.v0,
+	minOut := -param.vMax,
+	maxOut := param.vMax,
+	Out => PistonVelocity
+	);
+	
+fbPistonPosition(
+	ssMethodType := ssMethodType,
+	tCycle := param.tCycle,
+	In := PistonVelocity,
+	Init := param.x0,
+	minOut := -5000,
+	maxOut := param.xMax+5000,
+	Out => PistonPosition
+	);
+
+//IF PistonPosition >= param.xMax THEN 
+//	PistonPosition := param.xMax;
+//ELSIF PistonPosition <= 0 THEN 
+//	PistonPosition := 0;
+//END_IF;	]]></ST>
+    </Implementation>
+    <LineIds Name="CylinderMech">
+      <LineId Id="206" Count="39" />
+      <LineId Id="247" Count="1" />
+      <LineId Id="201" Count="1" />
+      <LineId Id="288" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="37" Count="1" />
+      <LineId Id="154" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="126" Count="1" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="128" Count="1" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="118" Count="4" />
+      <LineId Id="68" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

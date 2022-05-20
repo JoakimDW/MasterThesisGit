@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <GVL Name="G_ActuationSystems" Id="{aa1d94ab-57df-4340-a5d5-4dff3e2c03ff}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	ReturnPressure : LREAL;
+	SupplyPressure : LREAL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
