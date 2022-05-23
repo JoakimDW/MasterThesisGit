@@ -13,13 +13,16 @@ VAR_OUTPUT
 END_VAR
 VAR
     thetaAngleRad : LREAL;
+	thetaAngleDeg : LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 //Angle A joint 1 and joint 2
-thetaAngleRad := ACOS( (EXPT(b,2) + EXPT(c,2) - EXPT(a,2) ) / ((2) * b * c));
-thetaAngle := thetaAngleRad*(180/par.pi);
+thetaAngle := ACOS( (EXPT(b,2) + EXPT(c,2) - EXPT(a,2) ) / ((2) * b * c));
+
+//To make it into degrees if i need that:
+thetaAngleDeg := thetaAngle*(180/par.pi);
 
 
 
@@ -29,6 +32,8 @@ thetaAngle := thetaAngleRad*(180/par.pi);
       <LineId Id="97" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="96" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="117" Count="0" />
       <LineId Id="103" Count="0" />
       <LineId Id="95" Count="0" />
       <LineId Id="90" Count="0" />

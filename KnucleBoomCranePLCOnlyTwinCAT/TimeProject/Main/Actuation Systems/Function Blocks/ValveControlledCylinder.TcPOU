@@ -13,6 +13,7 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 	F_Hydraulic : LREAL;
+	AngleJoint : LREAL;
 END_VAR
 VAR
 	PressurepA : LREAL;
@@ -54,7 +55,6 @@ VAR
 
 	//CraneAngles
 	fbCraneAngleJoint : CraneAngle;
-	AngleJoint : LREAL;
 	
 	//HydraulicMotor
 	fbHydraulicMotor : HydraulicMotor;
@@ -172,6 +172,7 @@ fbHydraulicMotor(
 	PressureOut := PressurepB,
 );
 
+//Kinematics
 
 
 
@@ -243,7 +244,9 @@ fbHydraulicMotor(
       <LineId Id="525" Count="0" />
       <LineId Id="906" Count="0" />
       <LineId Id="900" Count="0" />
-      <LineId Id="907" Count="4" />
+      <LineId Id="907" Count="3" />
+      <LineId Id="970" Count="0" />
+      <LineId Id="911" Count="0" />
       <LineId Id="829" Count="5" />
       <LineId Id="828" Count="0" />
     </LineIds>

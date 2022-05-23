@@ -12,7 +12,8 @@ END_VAR
 Timer := Timer + 0.001;
 
 ActuationSystems();
-P_Joy();]]></ST>
+P_Joy();
+]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="77" Count="0" />
@@ -20,6 +21,7 @@ P_Joy();]]></ST>
       <LineId Id="413" Count="0" />
       <LineId Id="368" Count="0" />
       <LineId Id="423" Count="0" />
+      <LineId Id="429" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

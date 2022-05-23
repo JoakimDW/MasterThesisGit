@@ -70,7 +70,7 @@ F_Stribeck_Friction := (((EXP(( -(PistonVelocity * y_tmp)) / param.StaticFrictio
 
 
 /// Piston Force Total [N] ///
-F_Piston := F_Hydraulic - F_Upper_Stroke_Limit + F_Lower_Stroke_Limit - F_Stribeck_Friction;
+F_Piston := (F_Hydraulic - F_Upper_Stroke_Limit + F_Lower_Stroke_Limit - F_Stribeck_Friction);
 
 
 // Piston Acceleration [m/s^2]

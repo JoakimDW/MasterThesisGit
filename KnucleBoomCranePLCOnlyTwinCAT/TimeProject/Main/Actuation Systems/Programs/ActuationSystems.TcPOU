@@ -11,11 +11,22 @@ fbMainJibCylinderMech : CylinderMech;
 fbKnuckleJibCylinderMech : CylinderMech;
 fbkingRotationCylinderMech : CylinderMech;
 
+fbFWKinematics : FWKinematics;
 fbHPU : HPU;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbHPU(
+);
+
+fbFWKinematics(
+	L1 := 4.543126+1.097+1.000,  												//[m]
+	L2 := 0,																	//[m]
+	L3 := 17.939373,															//[m]
+	L4 := 9.548784,																//[m]
+	thetaMainBoom := ActuationSystems.fbKnuckleJibCylinderHyd.AngleJoint,		//[rad]
+	thetaKnuckleBoom := ActuationSystems.fbMainJibCylinderHyd.AngleJoint, 		//[rad]
+	thetaSlew := 0																//[rad]
 );
 
 //Hyd Model for MainJibCylinder
@@ -75,7 +86,14 @@ fbkingRotationCylinderMech(
     <LineIds Name="ActuationSystems">
       <LineId Id="31" Count="0" />
       <LineId Id="30" Count="0" />
-      <LineId Id="67" Count="0" />
+      <LineId Id="141" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="145" Count="2" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="149" Count="1" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="142" Count="0" />
+      <LineId Id="140" Count="0" />
       <LineId Id="34" Count="0" />
       <LineId Id="5" Count="0" />
       <LineId Id="68" Count="1" />
