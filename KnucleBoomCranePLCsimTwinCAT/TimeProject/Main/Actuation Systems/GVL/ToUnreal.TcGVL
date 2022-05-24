@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
-  <GVL Name="ToUnreal" Id="{65dfc488-1564-4dc7-bf95-af1a545cd988}">
-    <Declaration><![CDATA[{attribute 'qualified_only'}
-VAR_GLOBAL
-	MainJibPistForce : LREAL;
-END_VAR]]></Declaration>
-  </GVL>
-</TcPlcObject>
