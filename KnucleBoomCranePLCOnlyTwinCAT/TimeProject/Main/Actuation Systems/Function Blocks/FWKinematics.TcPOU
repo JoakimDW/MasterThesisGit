@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="FWKinematics" Id="{7097862a-1caf-42f1-82d5-88fbe7cef7b9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FWKinematics
+VAR_INPUT
+	par : ST_pValveControlledCylinder;
+	fbCraneAngle : CraneAngle;
+	L1 : LREAL;
+	L2 : LREAL;
+	L3 : LREAL;
+	L4 : LREAL;
+	thetaSlew : LREAL;
+	thetaMainBoom : LREAL;
+	thetaKnuckleBoom : LREAL;
+END_VAR
+VAR_OUTPUT
+	X : LREAL;
+	Y : LREAL;
+	Z : LREAL;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+
+
+
+X := COS(thetaSlew)*(L2 + L4*COS(thetaMainBoom + thetaKnuckleBoom) + L3*COS(thetaMainBoom));
+Y := SIN(thetaSlew)*(L2 + L4*COS(thetaMainBoom + thetaKnuckleBoom) + L3*COS(thetaMainBoom));
+Z := L1 + L4*SIN(thetaMainBoom + thetaKnuckleBoom) + L3*SIN(thetaMainBoom);
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FWKinematics">
+      <LineId Id="67" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="10" Count="2" />
+      <LineId Id="65" Count="1" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="41" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
