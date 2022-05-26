@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="Pump" Id="{60bcebe8-6c74-45e8-b0d4-cf2ae27250a2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Pump
+VAR_INPUT
+	MotorSpeedRPM: LREAL;
+	PumpDisplacement: LREAL;
+	DeltaMaxPressure: LREAL;
+	PistonVelocity4Pump : LREAL;
+	par : ST_pValveControlledCylinder;
+END_VAR
+VAR_OUTPUT
+	PumpTorque: LREAL;
+	PumpFlowRate: LREAL;
+END_VAR
+VAR
+
+	// Trying to make the system go towards a certain set xpos
+(*	xDeviation : LREAL;
+	xSet : LREAL := 0.7;
+	vDeviation : LREAL;
+	fbVelocity : DiscreteIntegrator;
+	vDeviationPre : LREAL;
+	*)
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+PumpTorque := (DeltaMaxPressure * PumpDisplacement) * 15915.494309189535;
+
+PumpFlowRate := (PumpDisplacement * MotorSpeedRPM) * 1000.0;
+
+
+	
+	
+]]></ST>
+    </Implementation>
+    <LineIds Name="Pump">
+      <LineId Id="7" Count="1" />
+      <LineId Id="11" Count="2" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="58" Count="1" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

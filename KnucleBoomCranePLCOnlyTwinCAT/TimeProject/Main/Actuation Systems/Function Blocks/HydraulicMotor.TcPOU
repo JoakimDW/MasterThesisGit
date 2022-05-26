@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="HydraulicMotor" Id="{90f53dd3-8e70-4d35-83cf-1af75a7a3a25}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK HydraulicMotor
+VAR_INPUT
+	par : ST_pValveControlledCylinder;
+	PressureIn : LREAL;
+	PressureOut : LREAL;
+END_VAR
+VAR_OUTPUT
+	Torque : LREAL;
+END_VAR
+VAR
+	dpsum : LREAL;					//[pa]
+	Dm : LREAL := 189;				//[cm^3/Rev]
+	nhm : LREAL := 0.9;			//[-]
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//For controlling the king joint, aka rotation of the whole crane horisontally
+
+dpsum := (PressureIn - PressureOut);
+
+Torque := ( dpsum * Dm * nhm * EXPT(10,(-6))) / (2 * par.pi);]]></ST>
+    </Implementation>
+    <LineIds Name="HydraulicMotor">
+      <LineId Id="9" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

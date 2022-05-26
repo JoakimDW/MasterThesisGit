@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="CraneAngle" Id="{9659ca86-e779-4b60-b3a4-04e044f00676}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK CraneAngle
+VAR_INPUT
+	par : ST_pValveControlledCylinder;
+	a : LREAL;
+	b : LREAL;
+	c : LREAL;
+END_VAR
+VAR_OUTPUT
+	thetaAngle : LREAL;
+END_VAR
+VAR
+    thetaAngleRad : LREAL;
+	thetaAngleDeg : LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+//Angle A joint 1 and joint 2
+thetaAngle := ACOS( (EXPT(b,2) + EXPT(c,2) - EXPT(a,2) ) / ((2) * b * c));
+
+//To make it into degrees if i need that:
+thetaAngleDeg := thetaAngle*(180/par.pi);
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="CraneAngle">
+      <LineId Id="97" Count="0" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
